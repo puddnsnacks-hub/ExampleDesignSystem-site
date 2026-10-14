@@ -1,0 +1,77 @@
+<!-- @dsCard group="Wayfinding" height=461 subtitle=".xds-menu" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Menu</title>
+<style>
+html, body { margin: 0; }
+body { min-height: 100vh; }
+.xp { padding: var(--s-space-xl); }
+.xp-bare { padding: 0; }
+.xp-bare .cap { padding-inline: var(--s-space-xl); box-sizing: border-box; }
+.xp-note { margin: 0 0 var(--s-space-base); }
+.xp-bare .xp-note { padding-block-start: var(--s-space-base); }
+.row { display: flex; flex-wrap: wrap; gap: var(--s-space-md); align-items: center; margin-bottom: var(--s-space-md); }
+.row:last-child { margin-bottom: 0; }
+.stack { display: flex; flex-direction: column; gap: var(--s-space-md); }
+.grid2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--s-space-xl); }
+.grid2 > * { min-width: 0; }
+@media (max-width: 720px) { .grid2 { grid-template-columns: minmax(0, 1fr); } }
+.cap { width: 100%; margin: calc(-1 * var(--s-space-xs)) 0 0; font-family: var(--s-font-family-doc-mono), ui-monospace, monospace; font-size: var(--s-type-code-sm-size); color: var(--s-color-text-tertiary); }
+</style>
+</head>
+<body class="xds-page">
+<main class="xp">
+<div class="stack" style="gap:24px">
+  <div><p class="cap" style="margin:0 0 8px">side navigation · nav > ul > a · aria-current="page" · no role</p>
+      <nav aria-label="Grants"><ul class="xds-menu">
+        <li><a class="xds-menu__item" href="#">Dashboard</a></li>
+        <li><a class="xds-menu__item" href="#" aria-current="page">Grants</a></li>
+        <li><a class="xds-menu__item" href="#">Reports</a></li>
+        <li><a class="xds-menu__item" href="#">Archive</a></li>
+      </ul></nav></div>
+  <div><p class="cap" style="margin:0 0 8px">menu · ul[role=menu] · arrow keys, type-ahead, Escape</p>
+      <ul class="xds-menu" role="menu" aria-label="Actions">
+        <li><button class="xds-menu__item" role="menuitem" type="button">Duplicate</button></li>
+        <li><button class="xds-menu__item" role="menuitem" type="button">Rename</button></li>
+        <li><button class="xds-menu__item" role="menuitem" type="button">Export</button></li>
+        <li><hr class="xds-menu__separator"></li>
+        <li><button class="xds-menu__item" role="menuitem" type="button" aria-disabled="true">Delete</button></li>
+      </ul></div>
+</div>
+</main>
+<script>
+(function () {
+  /* Dark surface theme: a dark-capable component carries data-surface="dark", as the system's own dark
+     specimens do; a light-only component has no dark variant, so its preview stays light and says so. */
+  var DARK = ".xds-prose,.xds-paper,.xds-button,.xds-link,.xds-label,.xds-checkbox,.xds-radio,.xds-switch,.xds-chip,.xds-divider,.xds-field,.xds-button-group,.xds-card,.xds-tile,.xds-summary-box,.xds-menu,.xds-disclosure,.xds-accordion,.xds-reference-list,.xds-gov-banner,.xds-breadcrumb,.xds-in-page-nav,.xds-text,.xds-icon,.xds-eyebrow,.xds-section-heading,.xds-pull-quote,.xds-stat,.xds-section-opener,.xds-objective,.xds-header,.xds-hero,.xds-modal,.xds-footer";
+  var PINNED = "[data-surface=\"light\"], [data-panel=\"light\"], .xds-header__mega, .xds-header__menu";
+  var LIGHT_ONLY = false;
+  var root = document.documentElement, main = document.querySelector("main"), mine = false;
+  function note(on) {
+    var n = document.getElementById("xp-note");
+    if (on && !n) { n = document.createElement("p"); n.id = "xp-note"; n.className = "cap xp-note"; n.textContent = "Light only: no dark variant. It stays light on a dark ground."; main.insertBefore(n, main.firstChild); }
+    if (!on && n) n.remove();
+  }
+  function apply() {
+    if (mine) { mine = false; return; }
+    var theme = root.getAttribute("data-theme");
+    if (LIGHT_ONLY) {
+      if (theme === "dark") { mine = true; root.setAttribute("data-theme", "light"); root.style.colorScheme = "light"; note(true); }
+      else note(false);
+      return;
+    }
+    document.querySelectorAll(DARK).forEach(function (el) {
+      if (theme === "dark") {
+        if (!el.hasAttribute("data-surface") && !el.closest(PINNED)) { el.setAttribute("data-surface", "dark"); el.setAttribute("data-xp-stamped", ""); }
+      } else if (el.hasAttribute("data-xp-stamped")) { el.removeAttribute("data-surface"); el.removeAttribute("data-xp-stamped"); }
+    });
+  }
+  document.querySelectorAll(".indet").forEach(function (i) { i.indeterminate = true; });
+  apply();
+  new MutationObserver(apply).observe(root, { attributes: true, attributeFilter: ["data-theme"] });
+})();
+</script>
+</body>
+</html>

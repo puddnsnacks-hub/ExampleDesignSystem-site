@@ -1,0 +1,64 @@
+<!-- @dsCard group="Blocks" height=660 width=1200 subtitle=".xds-objective" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Objective</title>
+<style>
+html, body { margin: 0; }
+body { min-height: 100vh; }
+.xp { padding: var(--s-space-xl); }
+.xp-bare { padding: 0; }
+.xp-bare .cap { padding-inline: var(--s-space-xl); box-sizing: border-box; }
+.xp-note { margin: 0 0 var(--s-space-base); }
+.xp-bare .xp-note { padding-block-start: var(--s-space-base); }
+.row { display: flex; flex-wrap: wrap; gap: var(--s-space-md); align-items: center; margin-bottom: var(--s-space-md); }
+.row:last-child { margin-bottom: 0; }
+.stack { display: flex; flex-direction: column; gap: var(--s-space-md); }
+.grid2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--s-space-xl); }
+.grid2 > * { min-width: 0; }
+@media (max-width: 720px) { .grid2 { grid-template-columns: minmax(0, 1fr); } }
+.cap { width: 100%; margin: calc(-1 * var(--s-space-xs)) 0 0; font-family: var(--s-font-family-doc-mono), ui-monospace, monospace; font-size: var(--s-type-code-sm-size); color: var(--s-color-text-tertiary); }
+</style>
+</head>
+<body class="xds-page">
+<main class="xp">
+<div class="stack" style="gap:0">
+  <section class="xds-objective"><div class="xds-objective__head"><span class="xds-objective__index">1.1</span><h3 class="xds-objective__title">Make the system safer for people on foot, on bikes, and in vehicles.</h3></div><div class="xds-objective__body"><div class="xds-objective__prose"><p>The argument for the objective. Two or three short paragraphs — why it matters, what changes if it is met, and how it will be known. Long enough to carry the case, short enough to sit beside the strategies without scrolling past them.</p><p>A second paragraph, when the argument needs it. The measure is capped so the line never outruns the eye.</p></div><div class="xds-objective__strategies"><p class="xds-objective__label">Strategies</p><ul class="xds-objective__list"><li class="xds-objective__item">Expand the safe-system approach across every mode and every partner agency.</li><li class="xds-objective__item">Use data to target the corridors and behaviors that drive the most serious harm.</li><li class="xds-objective__item">Fund the interventions with the strongest evidence first.</li></ul></div></div></section>
+  <section class="xds-objective"><div class="xds-objective__head"><span class="xds-objective__index">1.4</span><h3 class="xds-objective__title">Show the mechanism, where a list would only name its parts.</h3></div><div class="xds-objective__body"><div class="xds-objective__prose"><p>The same column, carrying a figure instead of a list. Use it when the support for the argument is a relationship rather than a set &mdash; a sequence, a flow, a comparison &mdash; and a reader would have to reassemble the picture from bullets.</p></div><div class="xds-objective__strategies"><p class="xds-objective__label">How it works</p><figure class="xds-objective__media"><svg viewBox="0 0 320 150" role="img" aria-label="Three stages, each feeding the next: propose, review, publish."><rect width="320" height="150" fill="none"/><rect x="8" y="52" width="86" height="46" fill="var(--s-color-surface-tint-vivid)" stroke="var(--s-color-action-base)"/><rect x="117" y="52" width="86" height="46" fill="var(--s-color-surface-tint-vivid)" stroke="var(--s-color-action-base)"/><rect x="226" y="52" width="86" height="46" fill="var(--s-color-action-base)"/><path d="M94 75h23M203 75h23" stroke="var(--s-color-accent-base)" stroke-width="2"/><text x="51" y="79" text-anchor="middle" font-family="Outfit,sans-serif" font-size="12" fill="var(--s-color-pinned-ink-strong)">Propose</text><text x="160" y="79" text-anchor="middle" font-family="Outfit,sans-serif" font-size="12" fill="var(--s-color-pinned-ink-strong)">Review</text><text x="269" y="79" text-anchor="middle" font-family="Outfit,sans-serif" font-size="12" fill="var(--s-color-text-on-action)">Publish</text></svg><figcaption>A figure takes the asset&rsquo;s own proportions and is never cropped.</figcaption></figure></div></div></section>
+</div>
+</main>
+<script>
+(function () {
+  /* Dark surface theme: a dark-capable component carries data-surface="dark", as the system's own dark
+     specimens do; a light-only component has no dark variant, so its preview stays light and says so. */
+  var DARK = ".xds-prose,.xds-paper,.xds-button,.xds-link,.xds-label,.xds-checkbox,.xds-radio,.xds-switch,.xds-chip,.xds-divider,.xds-field,.xds-button-group,.xds-card,.xds-tile,.xds-summary-box,.xds-menu,.xds-disclosure,.xds-accordion,.xds-reference-list,.xds-gov-banner,.xds-breadcrumb,.xds-in-page-nav,.xds-text,.xds-icon,.xds-eyebrow,.xds-section-heading,.xds-pull-quote,.xds-stat,.xds-section-opener,.xds-objective,.xds-header,.xds-hero,.xds-modal,.xds-footer";
+  var PINNED = "[data-surface=\"light\"], [data-panel=\"light\"], .xds-header__mega, .xds-header__menu";
+  var LIGHT_ONLY = false;
+  var root = document.documentElement, main = document.querySelector("main"), mine = false;
+  function note(on) {
+    var n = document.getElementById("xp-note");
+    if (on && !n) { n = document.createElement("p"); n.id = "xp-note"; n.className = "cap xp-note"; n.textContent = "Light only: no dark variant. It stays light on a dark ground."; main.insertBefore(n, main.firstChild); }
+    if (!on && n) n.remove();
+  }
+  function apply() {
+    if (mine) { mine = false; return; }
+    var theme = root.getAttribute("data-theme");
+    if (LIGHT_ONLY) {
+      if (theme === "dark") { mine = true; root.setAttribute("data-theme", "light"); root.style.colorScheme = "light"; note(true); }
+      else note(false);
+      return;
+    }
+    document.querySelectorAll(DARK).forEach(function (el) {
+      if (theme === "dark") {
+        if (!el.hasAttribute("data-surface") && !el.closest(PINNED)) { el.setAttribute("data-surface", "dark"); el.setAttribute("data-xp-stamped", ""); }
+      } else if (el.hasAttribute("data-xp-stamped")) { el.removeAttribute("data-surface"); el.removeAttribute("data-xp-stamped"); }
+    });
+  }
+  document.querySelectorAll(".indet").forEach(function (i) { i.indeterminate = true; });
+  apply();
+  new MutationObserver(apply).observe(root, { attributes: true, attributeFilter: ["data-theme"] });
+})();
+</script>
+</body>
+</html>

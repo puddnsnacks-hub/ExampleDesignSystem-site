@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Use ExampleDesignSystem</title>
+<link rel="stylesheet" href="../design-system/tokens.css">
+<link rel="stylesheet" href="../design-system/components/bundle.css">
+<script src="../design-system/components/bundle.js" defer></script>
+<script src="../documentation/doc-header.js" defer></script>
+<style>
+  /* Page chrome only. Binds --s-* tokens, never a literal. */
+  .hd-scroll { overflow-x: auto; }
+  main :not(pre) > code { overflow-wrap: anywhere; }
+  .hd-legend { display: flex; flex-wrap: wrap; gap: var(--s-space-xl); margin: 0; padding: 0; list-style: none; }
+  .hd-legend li { display: flex; align-items: center; gap: var(--s-space-sm); }
+  .hd-mark { display: inline-block; inline-size: var(--s-space-xs); block-size: var(--s-space-xl); }
+  .hd-mark[data-layer="tech"] { background: var(--s-color-emphasis-edge); }
+  .hd-mark[data-layer="plain"] { background: var(--s-color-accent-base); }
+  .hd-analogy { margin-block-start: var(--s-space-base); }
+  .hd-summary { display: flex; align-items: center; gap: var(--s-space-md); }
+</style>
+</head>
+<body class="xds-page">
+<a class="xds-skip-link" href="#main">Skip to main content</a>
+
+<header class="hero xds-ground" data-ground="dark">
+  <div class="xds-layout" data-kind="container">
+    <div class="xds-layout" data-kind="stack" data-gap="lg">
+      <div class="xds-section-heading" data-scale="display" data-surface="dark">
+        <p class="xds-eyebrow" data-surface="dark">ExampleDesignSystem</p>
+        <div class="xds-section-heading__row"><h1 class="xds-section-heading__heading">How to Use ExampleDesignSystem</h1></div>
+        <p class="xds-section-heading__lede">What is in the repository, how to build pages with the design system, and how to work on it with GitHub.</p>
+      </div>
+      <p class="xds-text" data-role="body-md" data-surface="dark">Every section is written twice. The technical block is always open and written for front-end engineers and AI builders. Under it, a plain-language walkthrough explains the same facts for designers, product managers and anyone new to design systems or GitHub.</p>
+      <ul class="hd-legend xds-text" data-role="ui-md" data-surface="dark" aria-label="How to read this page">
+        <li><span class="hd-mark" data-layer="tech" aria-hidden="true"></span>Vivid edge, labeled Technical: always visible</li>
+        <li><span class="hd-mark" data-layer="plain" aria-hidden="true"></span>Gold edge, labeled Plain language: open it when you want the walkthrough</li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+
+<!-- 1 -->
+<section class="topic xds-ground">
+  <div class="xds-layout" data-kind="container">
+    <div class="xds-layout" data-kind="stack" data-gap="lg">
+      <header class="xds-section-heading">
+        <p class="xds-eyebrow section-tag">Section 1 of 5</p>
+        <div class="xds-section-heading__row"><h2 class="xds-section-heading__heading">What is in the repository</h2></div>
+      </header>
+
+      <article class="xds-card tech-block" data-emphasis="2">
+        <p class="xds-card__eyebrow">Technical</p>
+        <div class="xds-prose">
+          <p>Repository: <code>puddnsnacks-hub/ExampleDesignSystem</code> (private). The site, this guide included, is published at <a href="https://xds.puddnsnacks.com">xds.puddnsnacks.com</a>. The <code>design-system/</code> folder mirrors the hosted design-system page file for file; everything else exists to view, document or rebuild it.</p>
+<pre><code>ExampleDesignSystem/
+├── design-system/              the design system, as published
+│   ├── README.md               brand book: the usage rules
+│   ├── tokens.json             every token (g and s colors, type, spacing, size, motion …)
+│   ├── tokens.css              compiled from tokens.json; never edit by hand
+│   ├── choosing.md             which component, by the user's goal
+│   ├── laws.md                 every system rule, one sentence each
+│   ├── design-system.json      index of the hosted page: title, asset records
+│   ├── components/
+│   │   ├── bundle.css          component tier (--c-*) and every component
+│   │   ├── bundle.js           behavior: window.XDS
+│   │   └── &lt;Name&gt;/            README.md guide + preview.html specimen
+│   ├── fonts/                  14 WOFF2 files
+│   └── assets/                 Icons (41), Logos (2), Photography (4)
+├── gallery/                    every preview as an openable page
+├── How-To-Docs/                this guide
+└── tools/
+    ├── compile_tokens.py       tokens.json → tokens.css
+    ├── build_gallery.py        previews → gallery/
+    └── build/                  regenerates design-system/ from the XDS V4 source</code></pre>
+          <div class="hd-scroll">
+            <table>
+              <caption>What each kind of file is for</caption>
+              <thead><tr><th scope="col">File</th><th scope="col">Read by</th><th scope="col">Edited by</th></tr></thead>
+              <tbody>
+                <tr><td><code>tokens.json</code></td><td>Tools, the hosted page, AI builders</td><td>People, then <code>compile_tokens.py</code></td></tr>
+                <tr><td><code>tokens.css</code>, <code>bundle.css</code>, <code>bundle.js</code></td><td>Browsers</td><td>Generated; do not edit</td></tr>
+                <tr><td><code>components/&lt;Name&gt;/README.md</code></td><td>People and AI builders</td><td>Generated from the component registry</td></tr>
+                <tr><td><code>README.md</code>, <code>choosing.md</code>, <code>laws.md</code></td><td>People and AI builders</td><td>People</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Counts: 69 components in 11 families, 15 page templates, 256 color tokens in three themes (Light, Dark surface, Alternate pack), 24 type styles.</p>
+        </div>
+      </article>
+
+      <article class="xds-card" data-variant="accent" data-emphasis="2">
+        <p class="xds-card__eyebrow">Plain language</p>
+        <div class="xds-accordion">
+          <details class="xds-accordion__item plain">
+            <summary class="xds-accordion__summary"><span class="xds-accordion__prompt hd-summary">What is all this, and which parts should I care about? <span class="xds-badge">Learn more</span></span></summary>
+            <div class="xds-accordion__panel body xds-prose">
+              <h4>What</h4>
+              <p>A design system is a shared kit for building web pages: the colors, type, spacing and ready-made pieces (buttons, cards, forms) every page uses. A repository, or "repo," is the folder that kit lives in on GitHub, with a full history of every change. The <code>design-system</code> folder is the kit itself. The other folders let you see it (<code>gallery</code>), learn it (this guide) and rebuild it (<code>tools</code>).</p>
+              <h4>Why</h4>
+              <p>Keeping the kit in one place means every page draws from the same source. Change the link color once and every page that uses the kit gets the new color. Without it, each team copies values by hand, and the copies slowly drift apart.</p>
+              <h4>How</h4>
+              <ol>
+                <li>Open <code>gallery/index.html</code> to see every piece working.</li>
+                <li>Read <code>design-system/README.md</code> for the rules of use.</li>
+                <li>Open a piece's folder in <code>design-system/components</code> for its guide.</li>
+                <li>Leave the generated files (<code>tokens.css</code>, <code>bundle.css</code>, <code>bundle.js</code>) alone; they are rebuilt from the sources.</li>
+              </ol>
+              <blockquote class="hd-analogy"><p><em>Analogy:</em> it's a restaurant's recipe binder. The binder is the design system, the photos in it are the gallery, and the kitchen notes on how the binder is printed are the tools. Cooks follow the binder; nobody rewrites the printed copies by hand.</p></blockquote>
+            </div>
+          </details>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 2 -->
+<section class="topic xds-ground" data-ground="sunken">
+  <div class="xds-layout" data-kind="container">
+    <div class="xds-layout" data-kind="stack" data-gap="lg">
+      <header class="xds-section-heading">
+        <p class="xds-eyebrow section-tag">Section 2 of 5</p>
+        <div class="xds-section-heading__row"><h2 class="xds-section-heading__heading">Load the system on a page</h2></div>
+      </header>
+
+      <article class="xds-card tech-block" data-emphasis="2">
+        <p class="xds-card__eyebrow">Technical</p>
+        <div class="xds-prose">
+          <p>Load three files in this order. The script is optional: every component renders without it.</p>
+<pre><code>&lt;link rel="stylesheet" href="design-system/tokens.css"&gt;
+&lt;link rel="stylesheet" href="design-system/components/bundle.css"&gt;
+&lt;script src="design-system/components/bundle.js" defer&gt;&lt;/script&gt;</code></pre>
+          <p>Every page starts from the same shell. <code>.xds-page</code> on <code>&lt;body&gt;</code> sets the ground, ink, focus ring and antialiasing once.</p>
+<pre><code>&lt;body class="xds-page"&gt;
+  &lt;a class="xds-skip-link" href="#main"&gt;Skip to main content&lt;/a&gt;
+  &lt;!-- gov-banner, site-alert (when there is one), header --&gt;
+  &lt;main id="main" tabindex="-1"&gt;
+    &lt;section class="xds-ground"&gt;
+      &lt;div class="xds-layout" data-kind="container"&gt;
+        &lt;button class="xds-button" data-variant="primary" data-size="md"&gt;Apply now&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+  &lt;!-- footer --&gt;
+&lt;/body&gt;</code></pre>
+          <ul>
+            <li>Classes begin <code>xds-</code>; variants are <code>data-*</code> attributes; parts are <code>__part</code> classes.</li>
+            <li><code>XDS.init(root)</code> wires markup injected after load. <code>XDS.toast(message, { status, title, sticky })</code> and <code>XDS.modal.open(id)</code> are the page-facing calls.</li>
+            <li>Icons come from the sprite <code>bundle.js</code> inserts: <code>&lt;svg class="xds-icon" data-size="md" aria-hidden="true"&gt;&lt;use href="#xds-search"&gt;&lt;/use&gt;&lt;/svg&gt;</code>.</li>
+            <li>Fonts load from <code>tokens.css</code>; keep <code>design-system/fonts/</code> beside it.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="xds-card" data-variant="accent" data-emphasis="2">
+        <p class="xds-card__eyebrow">Plain language</p>
+        <div class="xds-accordion">
+          <details class="xds-accordion__item plain">
+            <summary class="xds-accordion__summary"><span class="xds-accordion__prompt hd-summary">How does a web page actually start using the design system? <span class="xds-badge">Learn more</span></span></summary>
+            <div class="xds-accordion__panel body xds-prose">
+              <h4>What</h4>
+              <p>A web page is a text file of HTML: labeled boxes of content. On its own it looks plain. The three lines at the top point the page at the design system's files: <code>tokens.css</code> holds the values (colors, sizes), <code>bundle.css</code> holds the look of every piece, and <code>bundle.js</code> adds behavior such as menus that open and close. A "class" is the label that tells a box which piece it is, such as <code>xds-button</code>.</p>
+              <h4>Why</h4>
+              <p>Pointing at shared files instead of copying them means a page always gets the current version. The order matters because each file builds on the one before: the look needs the values, and the behavior needs the look.</p>
+              <h4>How</h4>
+              <ol>
+                <li>Put the three lines in the page's <code>&lt;head&gt;</code>, in that order.</li>
+                <li>Give the <code>&lt;body&gt;</code> the label <code>xds-page</code>.</li>
+                <li>Add pieces by copying their markup from each component's guide, then changing the words.</li>
+                <li>Pick a variant by changing an attribute, for example <code>data-variant="secondary"</code> for a quieter button.</li>
+              </ol>
+              <blockquote class="hd-analogy"><p><em>Analogy:</em> it's like a new apartment. The three lines connect the utilities: water first, then power, then the internet. Once they're connected, every room you furnish already works.</p></blockquote>
+            </div>
+          </details>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 3 -->
+<section class="topic xds-ground">
+  <div class="xds-layout" data-kind="container">
+    <div class="xds-layout" data-kind="stack" data-gap="lg">
+      <header class="xds-section-heading">
+        <p class="xds-eyebrow section-tag">Section 3 of 5</p>
+        <div class="xds-section-heading__row"><h2 class="xds-section-heading__heading">Build a page</h2></div>
+      </header>
+
+      <article class="xds-card tech-block" data-emphasis="2">
+        <p class="xds-card__eyebrow">Technical</p>
+        <div class="xds-prose">
+          <div class="hd-scroll">
+            <table>
+              <caption>The page model</caption>
+              <thead><tr><th scope="col">Layer</th><th scope="col">Markup</th><th scope="col">Rule</th></tr></thead>
+              <tbody>
+                <tr><td>Ground</td><td><code>section.xds-ground[data-ground]</code></td><td>A section. Carries the color edge to edge, holds content 32 from the window (16 at compact), no vertical padding.</td></tr>
+                <tr><td>Container</td><td><code>.xds-layout[data-kind="container"]</code></td><td>Sits in a ground, no fill, content 24 from the color, components 16 apart.</td></tr>
+                <tr><td>Paper</td><td><code>.xds-paper[data-surface]</code></td><td>A component with its own fill and paired stroke, inside a container.</td></tr>
+                <tr><td>Component</td><td><code>.xds-*</code></td><td>Always in a container, never directly on a ground.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <ul>
+            <li>Choose a component by the user's goal: <code>design-system/choosing.md</code>. It also lists what the system deliberately lacks (no carousels, no dark mode, no rounded corners outside the conversation family).</li>
+            <li>Start from a template: <code>design-system/components/&lt;Name&gt;Template/</code> holds 15 full pages (shell, landing, program, article, newsroom, data, form, grant, search, emergency, assistant …).</li>
+            <li>Dark is a variant, never a page mode: a dark section is <code>data-ground="dark"</code>, and each dark-capable component inside carries <code>data-surface="dark"</code>. Light-only components (forms, tables, alerts, the conversation family) stay light.</li>
+            <li>Brand packs: <code>data-theme="alt"</code> on <code>&lt;html&gt;</code> swaps the four brand ramps; status colors never change.</li>
+            <li>One h1 per page, as its first heading. No horizontal scrolling: wrap, fold or cut.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="xds-card" data-variant="accent" data-emphasis="2">
+        <p class="xds-card__eyebrow">Plain language</p>
+        <div class="xds-accordion">
+          <details class="xds-accordion__item plain">
+            <summary class="xds-accordion__summary"><span class="xds-accordion__prompt hd-summary">How do I put a page together without breaking the rules? <span class="xds-badge">Learn more</span></span></summary>
+            <div class="xds-accordion__panel body xds-prose">
+              <h4>What</h4>
+              <p>Every page is a stack of bands. A band (a "ground") sets the background color across the full width. Inside each band, a "container" keeps the content a set distance from the edges. The pieces, such as buttons and cards, sit inside containers. A "template" is a finished example page you can copy.</p>
+              <h4>Why</h4>
+              <p>Fixed nesting keeps spacing identical from page to page, so pages feel like one site even when different people build them. The system also measures the space between bands for you, so nobody has to guess.</p>
+              <h4>How</h4>
+              <ol>
+                <li>Find the template closest to the page you need in the gallery's Templates group, and copy its markup.</li>
+                <li>Replace the words and images; keep the bands, containers and pieces.</li>
+                <li>If you need a piece the template lacks, look up the user's goal in <code>choosing.md</code> and copy that piece's markup from its guide.</li>
+                <li>For a dark band, mark the band dark and mark each piece inside it dark too.</li>
+              </ol>
+              <blockquote class="hd-analogy"><p><em>Analogy:</em> it's packing moving boxes. The truck is the page, each box is a band, the packing paper is the container's margin, and the dishes are the pieces. Dishes never ride loose in the truck.</p></blockquote>
+            </div>
+          </details>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 4 -->
+<section class="topic xds-ground" data-ground="sunken">
+  <div class="xds-layout" data-kind="container">
+    <div class="xds-layout" data-kind="stack" data-gap="lg">
+      <header class="xds-section-heading">
+        <p class="xds-eyebrow section-tag">Section 4 of 5</p>
+        <div class="xds-section-heading__row"><h2 class="xds-section-heading__heading">Tokens: the three tiers, and changing a value</h2></div>
+      </header>
+
+      <article class="xds-card tech-block" data-emphasis="2">
+        <p class="xds-card__eyebrow">Technical</p>
+        <div class="xds-prose">
+          <div class="hd-scroll">
+            <table>
+              <caption>Token tiers</caption>
+              <thead><tr><th scope="col">Tier</th><th scope="col">Prefix</th><th scope="col">Holds</th><th scope="col">Lives in</th><th scope="col">Bound by</th></tr></thead>
+              <tbody>
+                <tr><td>Global</td><td><code>--g-</code></td><td>Literal values: color ramps, scales, families</td><td><code>tokens.json</code> (colors), <code>bundle.css</code> (the rest)</td><td>The semantic tier only</td></tr>
+                <tr><td>Semantic</td><td><code>--s-</code></td><td>Meaning, with a light and a dark-surface value</td><td><code>tokens.json</code></td><td>Page CSS</td></tr>
+                <tr><td>Component</td><td><code>--c-</code></td><td>The contract each component binds (1,752 tokens)</td><td><code>components/bundle.css</code></td><td>Components only</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Change a value:</p>
+<pre><code># 1. edit the value in design-system/tokens.json
+# 2. regenerate the compiled files and the gallery
+python3 tools/compile_tokens.py
+python3 tools/build_gallery.py
+# 3. check the gallery in Light, Dark surface and Alternate pack, then commit</code></pre>
+          <ul>
+            <li>Never write a color, size, radius or font literal in page CSS; bind <code>--s-*</code>. If no token fits, report the gap.</li>
+            <li>A semantic color's dark-surface value is stored twice: the Dark surface theme in <code>tokens.json</code> and the <code>data-surface="dark"</code> scope (section 3) in <code>bundle.css</code>. Change both together.</li>
+            <li>Every text color's usage note in <code>tokens.json</code> states its measured contrast; keep 4.5:1 (3:1 for icons and large text).</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="xds-card" data-variant="accent" data-emphasis="2">
+        <p class="xds-card__eyebrow">Plain language</p>
+        <div class="xds-accordion">
+          <details class="xds-accordion__item plain">
+            <summary class="xds-accordion__summary"><span class="xds-accordion__prompt hd-summary">What is a token, and why are there three kinds? <span class="xds-badge">Learn more</span></span></summary>
+            <div class="xds-accordion__panel body xds-prose">
+              <h4>What</h4>
+              <p>A token is a named value, such as "the link color" or "the space between two cards." There are three layers of names. The bottom layer is the raw paint chips: every shade, numbered. The middle layer gives each job a name, such as "body text" or "page background," and points at a chip. The top layer says which job each part of each piece uses.</p>
+              <h4>Why</h4>
+              <p>Names by job let you change meaning safely. If body text should be a shade darker, you point "body text" at a different chip, and every piece that uses body text follows. The middle layer also holds a second answer for dark backgrounds, so a piece knows its dark colors without anyone deciding them one piece at a time.</p>
+              <h4>How</h4>
+              <ol>
+                <li>Find the token in <code>tokens.json</code> and change its value.</li>
+                <li>Run the two commands shown above to rebuild.</li>
+                <li>Open the gallery and look at the pieces that use it, in all three themes.</li>
+                <li>Commit the change with a sentence saying what changed and why.</li>
+              </ol>
+              <blockquote class="hd-analogy"><p><em>Analogy:</em> it's a paint store. The chips on the wall are the bottom layer; "kitchen walls" and "front door" on your shopping list are the middle layer. Repaint the front door by crossing out one chip number on the list, not by visiting every door.</p></blockquote>
+            </div>
+          </details>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 5 -->
+<section class="topic xds-ground">
+  <div class="xds-layout" data-kind="container">
+    <div class="xds-layout" data-kind="stack" data-gap="lg">
+      <header class="xds-section-heading">
+        <p class="xds-eyebrow section-tag">Section 5 of 5</p>
+        <div class="xds-section-heading__row"><h2 class="xds-section-heading__heading">Work with the system on GitHub</h2></div>
+      </header>
+
+      <article class="xds-card tech-block" data-emphasis="2">
+        <p class="xds-card__eyebrow">Technical</p>
+        <div class="xds-prose">
+          <h3>Change something</h3>
+<pre><code>git clone https://github.com/puddnsnacks-hub/ExampleDesignSystem.git
+cd ExampleDesignSystem
+git switch -c darken-link-color
+# edit, then: python3 tools/compile_tokens.py &amp;&amp; python3 tools/build_gallery.py
+git add design-system gallery
+git commit -m "Darken the link color one step"
+git push -u origin darken-link-color</code></pre>
+          <p>Open a pull request from the branch on GitHub; merge into <code>main</code> after review. <code>main</code> is the released state.</p>
+          <h3>Release a version</h3>
+<pre><code>git switch main &amp;&amp; git pull
+git tag v2.1.1 -m "Link color one step darker"
+git push origin v2.1.1</code></pre>
+          <h3>Use it in another project</h3>
+<pre><code>git submodule add https://github.com/puddnsnacks-hub/ExampleDesignSystem.git vendor/ExampleDesignSystem
+# link vendor/ExampleDesignSystem/design-system/tokens.css, components/bundle.css, components/bundle.js
+git submodule update --remote          # pull a newer version later</code></pre>
+          <h3>Host the gallery and this guide</h3>
+          <p>The site lives in a separate public repository, <code>puddnsnacks-hub/ExampleDesignSystem-site</code>, served by GitHub Pages at <a href="https://xds.puddnsnacks.com">xds.puddnsnacks.com</a>. The source repository stays private. After a change is merged into <code>main</code>:</p>
+<pre><code>python3 tools/publish_site.py            # copies index.html, documentation/, gallery/, How-To-Docs/, design-system/ and pushes
+python3 tools/publish_site.py --dry-run  # counts what would change, pushes nothing</code></pre>
+          <p>Never edit the site repository by hand; each publish replaces it. The domain is a CNAME record (<code>xds</code> → <code>puddnsnacks-hub.github.io</code>) at the domain registrar. Without the site, open <code>index.html</code> from a local clone.</p>
+          <h3>Keep the hosted design-system page in step</h3>
+          <p><code>design-system/</code> mirrors the hosted page's files (<code>project/…</code>). After a merge, republish the changed files there; icons and photos stay as uploaded assets named in <code>design-system.json</code>. To regenerate everything from the XDS V4 source, see <code>tools/build/README.md</code>.</p>
+        </div>
+      </article>
+
+      <article class="xds-card" data-variant="accent" data-emphasis="2">
+        <p class="xds-card__eyebrow">Plain language</p>
+        <div class="xds-accordion">
+          <details class="xds-accordion__item plain">
+            <summary class="xds-accordion__summary"><span class="xds-accordion__prompt hd-summary">How do changes get from my computer to everyone else? <span class="xds-badge">Learn more</span></span></summary>
+            <div class="xds-accordion__panel body xds-prose">
+              <h4>What</h4>
+              <p>GitHub keeps the master copy of the repository online. "Clone" makes your own copy. A "branch" is a private draft where you make a change. A "commit" saves a step with a note. A "pull request" asks others to review your draft before it joins the master copy. A "tag" stamps a version number on a moment in history so other projects can ask for exactly that version.</p>
+              <h4>Why</h4>
+              <p>Drafts and reviews keep a half-finished change from reaching every page that uses the system. Version numbers let a project stay on a known version until it is ready to move up.</p>
+              <h4>How</h4>
+              <ol>
+                <li>Clone the repository once.</li>
+                <li>For each change, make a branch, edit, rebuild, and commit with a clear note.</li>
+                <li>Push the branch and open a pull request on GitHub; ask a teammate to review it.</li>
+                <li>After it merges, tag a new version if other projects should pick it up.</li>
+                <li>To update the public site, run the publish script. Everything in the site is public; the source stays private.</li>
+              </ol>
+              <blockquote class="hd-analogy"><p><em>Analogy:</em> it's a shared cookbook at a library. You borrow a copy, write your edits on sticky notes, and hand them to the librarian. Only after a second reader agrees do the notes go into the book, and each printing gets an edition number.</p></blockquote>
+            </div>
+          </details>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="xds-ground" data-ground="sunken">
+  <div class="xds-layout" data-kind="container">
+    <p class="xds-text" data-role="ui-md" data-tone="secondary">Generated October 14, 2026 for ExampleDesignSystem. Related: <a class="xds-link" href="../README.md">README.md</a> · <a class="xds-link" href="../design-system/README.md">design-system/README.md</a> · <a class="xds-link" href="../gallery/index.html">Gallery</a></p>
+  </div>
+</footer>
+</body>
+</html>

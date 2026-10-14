@@ -1,0 +1,92 @@
+<!-- @dsCard group="Fields" height=1363 width=900 subtitle=".xds-form" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Form</title>
+<style>
+html, body { margin: 0; }
+body { min-height: 100vh; }
+.xp { padding: var(--s-space-xl); }
+.xp-bare { padding: 0; }
+.xp-bare .cap { padding-inline: var(--s-space-xl); box-sizing: border-box; }
+.xp-note { margin: 0 0 var(--s-space-base); }
+.xp-bare .xp-note { padding-block-start: var(--s-space-base); }
+.row { display: flex; flex-wrap: wrap; gap: var(--s-space-md); align-items: center; margin-bottom: var(--s-space-md); }
+.row:last-child { margin-bottom: 0; }
+.stack { display: flex; flex-direction: column; gap: var(--s-space-md); }
+.grid2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--s-space-xl); }
+.grid2 > * { min-width: 0; }
+@media (max-width: 720px) { .grid2 { grid-template-columns: minmax(0, 1fr); } }
+.cap { width: 100%; margin: calc(-1 * var(--s-space-xs)) 0 0; font-family: var(--s-font-family-doc-mono), ui-monospace, monospace; font-size: var(--s-type-code-sm-size); color: var(--s-color-text-tertiary); }
+</style>
+</head>
+<body class="xds-page">
+<main class="xp">
+<form class="xds-form" onsubmit="return false">
+      <fieldset class="xds-form__section"><legend class="xds-form__legend">Your name</legend>
+        <div class="xds-field"><label class="xds-label" for="p-fn">First name <span class="xds-label__required" aria-hidden="true">*</span></label><input class="xds-input" id="p-fn" type="text" autocomplete="given-name"></div>
+        <div class="xds-field"><label class="xds-label" for="p-ln">Last name <span class="xds-label__required" aria-hidden="true">*</span></label><input class="xds-input" id="p-ln" type="text" autocomplete="family-name"></div>
+      </fieldset>
+      <fieldset class="xds-form__section"><legend class="xds-form__legend">Mailing address</legend>
+        <p class="xds-form__hint">Where we send the printed permit. Spacing is the grouping: 16px inside this group, 32px to the next.</p>
+        <div class="xds-field"><label class="xds-label" for="p-a1">Street address <span class="xds-label__required" aria-hidden="true">*</span></label><input class="xds-input" id="p-a1" type="text" autocomplete="address-line1"></div>
+        <label class="xds-checkbox"><input class="xds-checkbox__control" type="checkbox" aria-controls="p-a2-wrap" data-reveal> Add a second address line</label>
+        <div class="xds-form__reveal" id="p-a2-wrap" hidden><div class="xds-field"><label class="xds-label" for="p-a2">Address line 2</label><input class="xds-input" id="p-a2" type="text" autocomplete="address-line2"><p class="xds-field__help">Apartment, suite, unit, building, floor.</p></div></div>
+        <div class="xds-field"><label class="xds-label" for="p-city">City <span class="xds-label__required" aria-hidden="true">*</span></label><input class="xds-input" id="p-city" type="text" autocomplete="address-level2"></div>
+        <div class="xds-field"><label class="xds-label" for="p-state">State <span class="xds-label__required" aria-hidden="true">*</span></label><div class="xds-select"><button class="xds-select__trigger" type="button" id="p-state" aria-haspopup="listbox" aria-expanded="false" aria-controls="p-state-list" data-placeholder>Select a state</button><ul class="xds-menu xds-select__list" id="p-state-list" role="listbox" hidden><li class="xds-menu__item xds-select__option" role="option" data-value="dc">District of Columbia</li><li class="xds-menu__item xds-select__option" role="option" data-value="md">Maryland</li><li class="xds-menu__item xds-select__option" role="option" data-value="va">Virginia</li></ul><select class="xds-select__native" tabindex="-1" aria-hidden="true"><option value="dc">District of Columbia</option><option value="md">Maryland</option><option value="va">Virginia</option></select></div></div>
+        <div class="xds-field"><label class="xds-label" for="p-zip">ZIP code <span class="xds-label__required" aria-hidden="true">*</span></label><input class="xds-input" id="p-zip" type="text" autocomplete="postal-code" inputmode="numeric" pattern="[0-9]{5}(-[0-9]{4})?"></div>
+      </fieldset>
+      <fieldset class="xds-form__section"><legend class="xds-form__legend">Payment</legend>
+        <div class="xds-field"><label class="xds-label" for="p-cc">Card number <span class="xds-label__required" aria-hidden="true">*</span></label><input class="xds-input" id="p-cc" type="text" autocomplete="cc-number" inputmode="numeric"></div>
+        <div class="xds-field"><label class="xds-label" for="p-exp">Expiration (MM/YY) <span class="xds-label__required" aria-hidden="true">*</span></label><input class="xds-input" id="p-exp" type="text" autocomplete="cc-exp" inputmode="numeric" placeholder="MM/YY"></div>
+        <div class="xds-field"><label class="xds-label" for="p-cvc">Security code <span class="xds-label__required" aria-hidden="true">*</span></label><input class="xds-input" id="p-cvc" type="text" autocomplete="cc-csc" inputmode="numeric"><p class="xds-field__help">The 3 or 4 digits on the card.</p></div>
+        <div class="xds-field"><label class="xds-label" for="p-bzip">Billing ZIP code <span class="xds-label__required" aria-hidden="true">*</span></label><input class="xds-input" id="p-bzip" type="text" autocomplete="postal-code" inputmode="numeric"><p class="xds-field__help">Card verification asks for ZIP only.</p></div>
+      </fieldset>
+      <details class="xds-disclosure xds-form__notes" data-density="compact">
+        <summary class="xds-disclosure__summary"><span class="xds-disclosure__title">About the questions on this page</span><span class="xds-disclosure__control" aria-hidden="true"></span></summary>
+        <ul class="xds-disclosure__panel">
+          <li class="xds-disclosure__row">Your name must match the name on your government-issued ID.</li>
+          <li class="xds-disclosure__row">The mailing address is where the printed permit is sent; it does not have to match your billing address.</li>
+          <li class="xds-disclosure__row">We ask only for the billing ZIP code to verify the card. The full billing address is not stored.</li>
+          <li class="xds-disclosure__row">Saving and finishing later keeps this page for 30 days.</li>
+        </ul>
+      </details>
+      <div class="xds-form__actions" data-journey><button class="xds-button" data-variant="secondary">Back</button><div class="xds-form__forward"><button class="xds-button" data-variant="tertiary">Save and finish later</button><button class="xds-button" data-variant="primary">Continue</button></div></div>
+    </form>
+    <p class="cap" style="margin-top:12px">multi-page journey actions: back left · save-and-finish-later + continue right. On the last page Submit takes Continue&rsquo;s place &mdash; never both. A single-page form keeps the plain actions row (submit, then secondary).</p>
+</main>
+<script>
+(function () {
+  /* Dark surface theme: a dark-capable component carries data-surface="dark", as the system's own dark
+     specimens do; a light-only component has no dark variant, so its preview stays light and says so. */
+  var DARK = ".xds-prose,.xds-paper,.xds-button,.xds-link,.xds-label,.xds-checkbox,.xds-radio,.xds-switch,.xds-chip,.xds-divider,.xds-field,.xds-button-group,.xds-card,.xds-tile,.xds-summary-box,.xds-menu,.xds-disclosure,.xds-accordion,.xds-reference-list,.xds-gov-banner,.xds-breadcrumb,.xds-in-page-nav,.xds-text,.xds-icon,.xds-eyebrow,.xds-section-heading,.xds-pull-quote,.xds-stat,.xds-section-opener,.xds-objective,.xds-header,.xds-hero,.xds-modal,.xds-footer";
+  var PINNED = "[data-surface=\"light\"], [data-panel=\"light\"], .xds-header__mega, .xds-header__menu";
+  var LIGHT_ONLY = true;
+  var root = document.documentElement, main = document.querySelector("main"), mine = false;
+  function note(on) {
+    var n = document.getElementById("xp-note");
+    if (on && !n) { n = document.createElement("p"); n.id = "xp-note"; n.className = "cap xp-note"; n.textContent = "Light only: no dark variant. It stays light on a dark ground."; main.insertBefore(n, main.firstChild); }
+    if (!on && n) n.remove();
+  }
+  function apply() {
+    if (mine) { mine = false; return; }
+    var theme = root.getAttribute("data-theme");
+    if (LIGHT_ONLY) {
+      if (theme === "dark") { mine = true; root.setAttribute("data-theme", "light"); root.style.colorScheme = "light"; note(true); }
+      else note(false);
+      return;
+    }
+    document.querySelectorAll(DARK).forEach(function (el) {
+      if (theme === "dark") {
+        if (!el.hasAttribute("data-surface") && !el.closest(PINNED)) { el.setAttribute("data-surface", "dark"); el.setAttribute("data-xp-stamped", ""); }
+      } else if (el.hasAttribute("data-xp-stamped")) { el.removeAttribute("data-surface"); el.removeAttribute("data-xp-stamped"); }
+    });
+  }
+  document.querySelectorAll(".indet").forEach(function (i) { i.indeterminate = true; });
+  apply();
+  new MutationObserver(apply).observe(root, { attributes: true, attributeFilter: ["data-theme"] });
+})();
+</script>
+</body>
+</html>

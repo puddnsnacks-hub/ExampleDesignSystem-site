@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="../design-system/tokens.css">
+<link rel="stylesheet" href="../design-system/components/bundle.css">
+<script>document.documentElement.setAttribute("data-theme", new URLSearchParams(location.search).get("theme") || "light");</script>
+<script src="../design-system/components/bundle.js"></script>
+<meta charset="utf-8">
+<title>ExampleDesignSystem</title>
+<style>
+  html, body { margin: 0; height: 100%; }
+  body { background: var(--s-color-surface-page); color: var(--s-color-text-heading); overflow: hidden; }
+  .cover { position: relative; width: 960px; height: 288px; overflow: hidden; }
+  .band { position: absolute; top: 0; left: 0; width: 960px; height: 112px; overflow: hidden; }
+  .band svg { display: block; width: 960px; height: 112px; }
+  .ground { fill: var(--s-color-pinned-surface-elevated-dark); }
+  .action { fill: var(--s-color-action-base); }
+  .gold { fill: var(--s-color-pinned-heading-dark); }
+  .tint { fill: var(--s-color-surface-selection); }
+  .edge { fill: var(--s-color-emphasis-edge); }
+  .sq { rx: var(--s-radius-container); }
+  .words { position: absolute; left: var(--s-space-xl); right: var(--s-space-xl); bottom: var(--s-space-xl); }
+  .name { margin: 0; font-family: var(--s-font-family-display), system-ui, sans-serif; font-weight: 700; font-size: 64px; line-height: 0.95; letter-spacing: -0.6px; color: var(--s-color-text-heading); white-space: nowrap; }
+  .tag { margin: var(--s-space-sm) 0 0; font-family: var(--s-font-family-ui), system-ui, sans-serif; font-size: 14px; line-height: 20px; letter-spacing: 0.1px; color: var(--s-color-text-secondary); }
+</style>
+</head>
+<body>
+<div class="cover">
+<div class="band" aria-hidden="true">
+<svg viewBox="0 0 960 112" width="960" height="112">
+<!--
+  blocks      s-color-action-base 112×80, the action · s-color-pinned-surface-elevated-dark 520×112, the dark ground, bled off the top · s-color-pinned-heading-dark 200×48, the gold heading ink · s-color-surface-selection 256×48, the tint, bled off the right — a band across the top, about a third of the height
+  arrangement the top-band skeleton (the name is too wide to sit beside the art): the page model in a strip, a dark ground holding a paper, the action block and a tint band on the light ground either side, bottoms on one line
+  pattern     the emphasis edge, the system's own device ("an outside left edge of 1, 3, 6 or 12px by level, drawn so nothing reflows"): 3px on the ground, 6px on the band, the 12px chamfered flag on the paper
+  scales      sides on the 8 grid (s-space-*), gutters s-space-2xl 32, edges s-emphasis-edge-2 / -3 / -4, corners s-radius-container 0
+-->
+<rect class="action sq" x="24" y="24" width="112" height="80"/>
+<rect class="ground sq" x="168" y="-8" width="520" height="112"/>
+<rect class="edge" x="165" y="-8" width="3" height="112"/>
+<rect class="gold sq" x="232" y="32" width="200" height="48"/>
+<polygon class="edge" points="220,44 232,32 232,80 220,80"/>
+<rect class="tint sq" x="720" y="56" width="256" height="48"/>
+<rect class="edge" x="714" y="56" width="6" height="48"/>
+</svg>
+</div>
+<div class="words">
+<h1 class="name">ExampleDesignSystem</h1>
+<p class="tag">The system as code, running in the browser.</p>
+</div>
+</div>
+</body>
+</html>

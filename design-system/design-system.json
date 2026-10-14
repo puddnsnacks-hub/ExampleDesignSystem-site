@@ -1,0 +1,383 @@
+{
+  "v": 3,
+  "layout": "files",
+  "createdOnFiles": {
+    "v": 1,
+    "at": "2026-10-14T00:30:35Z"
+  },
+  "title": "ExampleDesignSystem",
+  "namespace": "XDS",
+  "libraries": [],
+  "sections": {},
+  "groups": [
+    "Logos",
+    "Icons",
+    "Photography"
+  ],
+  "assetGroups": {
+    "Logos": {
+      "name": "Logos",
+      "tile": "m",
+      "order": [
+        "ExampleDesignSystem_Logo_Dark.svg",
+        "ExampleDesignSystem_Logo_Light.svg"
+      ],
+      "files": {
+        "ExampleDesignSystem_Logo_Dark.svg": {
+          "name": "ExampleDesignSystem_Logo_Dark.svg",
+          "blob": "5a909f96fcd7a7d27e56c7d09fde6b22",
+          "size": 265,
+          "type": "image/svg+xml"
+        },
+        "ExampleDesignSystem_Logo_Light.svg": {
+          "name": "ExampleDesignSystem_Logo_Light.svg",
+          "blob": "63e6e487bfe146444bcad7f21cafcbee",
+          "size": 265,
+          "type": "image/svg+xml"
+        }
+      }
+    },
+    "Icons": {
+      "name": "Icons",
+      "tile": "s",
+      "order": [
+        "search.svg",
+        "close.svg",
+        "menu.svg",
+        "chevron-down.svg",
+        "chevron-up.svg",
+        "chevron-right.svg",
+        "chevron-left.svg",
+        "check.svg",
+        "warning.svg",
+        "error.svg",
+        "info.svg",
+        "success.svg",
+        "emergency.svg",
+        "download.svg",
+        "lock.svg",
+        "arrow-left.svg",
+        "arrow-right.svg",
+        "external.svg",
+        "clear.svg",
+        "copy.svg",
+        "thumb-up.svg",
+        "thumb-down.svg",
+        "retry.svg",
+        "send.svg",
+        "help.svg",
+        "calendar.svg",
+        "upload.svg",
+        "file.svg",
+        "sort.svg",
+        "sort-asc.svg",
+        "sort-desc.svg",
+        "chevrons-left.svg",
+        "chevrons-right.svg",
+        "filter.svg",
+        "print.svg",
+        "quote.svg",
+        "social-facebook.svg",
+        "social-instagram.svg",
+        "social-linkedin.svg",
+        "social-x.svg",
+        "social-youtube.svg"
+      ],
+      "files": {
+        "search.svg": {
+          "name": "search.svg",
+          "blob": "d0eec13bd26eca822d229fe2bb442a5d",
+          "size": 222,
+          "type": "image/svg+xml"
+        },
+        "close.svg": {
+          "name": "close.svg",
+          "blob": "a0660ec21657be20bb7ce6ba96bffbf0",
+          "size": 243,
+          "type": "image/svg+xml"
+        },
+        "menu.svg": {
+          "name": "menu.svg",
+          "blob": "906d1bb921a476e32c0cd71f8a943040",
+          "size": 215,
+          "type": "image/svg+xml"
+        },
+        "chevron-down.svg": {
+          "name": "chevron-down.svg",
+          "blob": "1d5f5e935d5ecbc3ab9f9c897a9a4b74",
+          "size": 152,
+          "type": "image/svg+xml"
+        },
+        "chevron-up.svg": {
+          "name": "chevron-up.svg",
+          "blob": "c8098c33dac3e45d7bbb6c7ce1755171",
+          "size": 152,
+          "type": "image/svg+xml"
+        },
+        "chevron-right.svg": {
+          "name": "chevron-right.svg",
+          "blob": "6aef595131e0def8d43664d257ccb712",
+          "size": 152,
+          "type": "image/svg+xml"
+        },
+        "chevron-left.svg": {
+          "name": "chevron-left.svg",
+          "blob": "4c22cb676569fad7cdde8cd3e8a28939",
+          "size": 152,
+          "type": "image/svg+xml"
+        },
+        "check.svg": {
+          "name": "check.svg",
+          "blob": "f31d44500b246982dab7e6a4ec0d31c2",
+          "size": 166,
+          "type": "image/svg+xml"
+        },
+        "warning.svg": {
+          "name": "warning.svg",
+          "blob": "5c4622e2dd499f625b899d837f7b0ed8",
+          "size": 352,
+          "type": "image/svg+xml"
+        },
+        "error.svg": {
+          "name": "error.svg",
+          "blob": "2fcf537e922061cd16752e82bf784f60",
+          "size": 345,
+          "type": "image/svg+xml"
+        },
+        "info.svg": {
+          "name": "info.svg",
+          "blob": "0c4789e0e1fc63bf58f3b9c10353ddd2",
+          "size": 341,
+          "type": "image/svg+xml"
+        },
+        "success.svg": {
+          "name": "success.svg",
+          "blob": "59ea03452fd8f61e4826dacc50dd682f",
+          "size": 278,
+          "type": "image/svg+xml"
+        },
+        "emergency.svg": {
+          "name": "emergency.svg",
+          "blob": "67784d055d741ff2a31487bbbfcba71b",
+          "size": 408,
+          "type": "image/svg+xml"
+        },
+        "download.svg": {
+          "name": "download.svg",
+          "blob": "62d22e01a12037bff0b969206a366ae2",
+          "size": 256,
+          "type": "image/svg+xml"
+        },
+        "lock.svg": {
+          "name": "lock.svg",
+          "blob": "148e8ee29daa1e3ccac1ae782126a9a9",
+          "size": 245,
+          "type": "image/svg+xml"
+        },
+        "arrow-left.svg": {
+          "name": "arrow-left.svg",
+          "blob": "3f67de4aa2aea2d473e3f63b656f6207",
+          "size": 181,
+          "type": "image/svg+xml"
+        },
+        "arrow-right.svg": {
+          "name": "arrow-right.svg",
+          "blob": "e3ff30c2aa48376757b1911a1fed1cc2",
+          "size": 183,
+          "type": "image/svg+xml"
+        },
+        "external.svg": {
+          "name": "external.svg",
+          "blob": "7ea5d682d35c8d913fcecd9078df3fe5",
+          "size": 302,
+          "type": "image/svg+xml"
+        },
+        "clear.svg": {
+          "name": "clear.svg",
+          "blob": "4ad5b66493dee22e805299f97b2dadc2",
+          "size": 874,
+          "type": "image/svg+xml"
+        },
+        "copy.svg": {
+          "name": "copy.svg",
+          "blob": "152d73a2abb9798a50222ae678353d58",
+          "size": 247,
+          "type": "image/svg+xml"
+        },
+        "thumb-up.svg": {
+          "name": "thumb-up.svg",
+          "blob": "bb890b7d3609c123fc87e14dbcfc0a1e",
+          "size": 401,
+          "type": "image/svg+xml"
+        },
+        "thumb-down.svg": {
+          "name": "thumb-down.svg",
+          "blob": "505fdbf371019db4df60cbcd1b1faa39",
+          "size": 400,
+          "type": "image/svg+xml"
+        },
+        "retry.svg": {
+          "name": "retry.svg",
+          "blob": "e7df699b54476b1da0bb93f1d5ac89fd",
+          "size": 246,
+          "type": "image/svg+xml"
+        },
+        "send.svg": {
+          "name": "send.svg",
+          "blob": "931eb101b653c9cc615a6dab6371992f",
+          "size": 305,
+          "type": "image/svg+xml"
+        },
+        "help.svg": {
+          "name": "help.svg",
+          "blob": "f5056980cb2ff5ec5cd2835b7f9ee8ec",
+          "size": 368,
+          "type": "image/svg+xml"
+        },
+        "calendar.svg": {
+          "name": "calendar.svg",
+          "blob": "fca0ce513b33e1de8bfc2c572c26d8ad",
+          "size": 263,
+          "type": "image/svg+xml"
+        },
+        "upload.svg": {
+          "name": "upload.svg",
+          "blob": "fea683454719d51b605d49dcce43dc11",
+          "size": 248,
+          "type": "image/svg+xml"
+        },
+        "file.svg": {
+          "name": "file.svg",
+          "blob": "1c0dc678963ea22ef0e9250b6ce6bdda",
+          "size": 357,
+          "type": "image/svg+xml"
+        },
+        "sort.svg": {
+          "name": "sort.svg",
+          "blob": "aefb50161117b4830251fbaabe097ff1",
+          "size": 249,
+          "type": "image/svg+xml"
+        },
+        "sort-asc.svg": {
+          "name": "sort-asc.svg",
+          "blob": "0e1ca7dcdc47cae141d352e970156d60",
+          "size": 180,
+          "type": "image/svg+xml"
+        },
+        "sort-desc.svg": {
+          "name": "sort-desc.svg",
+          "blob": "a59e28eb12c1666bfacace289bc778c6",
+          "size": 188,
+          "type": "image/svg+xml"
+        },
+        "chevrons-left.svg": {
+          "name": "chevrons-left.svg",
+          "blob": "c6007614a2408a7f3ef7154016a9de52",
+          "size": 183,
+          "type": "image/svg+xml"
+        },
+        "chevrons-right.svg": {
+          "name": "chevrons-right.svg",
+          "blob": "2d2211260b05fda6bc78c902ae7a09ad",
+          "size": 181,
+          "type": "image/svg+xml"
+        },
+        "filter.svg": {
+          "name": "filter.svg",
+          "blob": "e8ea8b4b9a7e839257719ca27d1b9756",
+          "size": 278,
+          "type": "image/svg+xml"
+        },
+        "print.svg": {
+          "name": "print.svg",
+          "blob": "e5d7c74970c2eaca422f93f6b9b77d75",
+          "size": 249,
+          "type": "image/svg+xml"
+        },
+        "quote.svg": {
+          "name": "quote.svg",
+          "blob": "003970fa6895bc59dc29a2d3b5b63c86",
+          "size": 381,
+          "type": "image/svg+xml"
+        },
+        "social-facebook.svg": {
+          "name": "social-facebook.svg",
+          "blob": "ab0cb9257fc1a501e93087f3341f0b51",
+          "size": 373,
+          "type": "image/svg+xml"
+        },
+        "social-instagram.svg": {
+          "name": "social-instagram.svg",
+          "blob": "9df87285d9421e31bef538b2aaf4dbbe",
+          "size": 1543,
+          "type": "image/svg+xml"
+        },
+        "social-linkedin.svg": {
+          "name": "social-linkedin.svg",
+          "blob": "1568501e95f6f63d4c80aa0dc8c2368d",
+          "size": 479,
+          "type": "image/svg+xml"
+        },
+        "social-x.svg": {
+          "name": "social-x.svg",
+          "blob": "18ac896cf363f4934292425b369db42c",
+          "size": 397,
+          "type": "image/svg+xml"
+        },
+        "social-youtube.svg": {
+          "name": "social-youtube.svg",
+          "blob": "62c964cff3fd16b3de4150f626d782d0",
+          "size": 427,
+          "type": "image/svg+xml"
+        }
+      }
+    },
+    "Photography": {
+      "name": "Photography",
+      "tile": "l",
+      "order": [
+        "highway-hero.jpg",
+        "highway-section.jpg",
+        "highway-section-night.jpg",
+        "highway-section-square.jpg"
+      ],
+      "files": {
+        "highway-hero.jpg": {
+          "name": "highway-hero.jpg",
+          "blob": "83e49657a9fdc2145f043e43e743915b",
+          "size": 202300,
+          "type": "image/jpeg"
+        },
+        "highway-section.jpg": {
+          "name": "highway-section.jpg",
+          "blob": "b54c4e91e0771e715f43587ecaa5d462",
+          "size": 168018,
+          "type": "image/jpeg"
+        },
+        "highway-section-night.jpg": {
+          "name": "highway-section-night.jpg",
+          "blob": "79cfa711d29a0bcd82eeb70609bc11e5",
+          "size": 142187,
+          "type": "image/jpeg"
+        },
+        "highway-section-square.jpg": {
+          "name": "highway-section-square.jpg",
+          "blob": "d58b6f9e753f458b31b5883c96b4da86",
+          "size": 102297,
+          "type": "image/jpeg"
+        }
+      }
+    }
+  },
+  "blobs": {},
+  "docs": {
+    "readme": "project/README.md",
+    "sections": []
+  },
+  "lastChange": {
+    "by": "ExampleDesignSystem",
+    "at": "2026-10-14T17:12:25Z",
+    "via": "ExampleDesignSystem repository",
+    "note": "Removed agency branding: new logo, generic names and copy, the brand pack renamed Alternate pack."
+  }
+}

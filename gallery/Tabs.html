@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="../design-system/tokens.css">
+<link rel="stylesheet" href="../design-system/components/bundle.css">
+<script>document.documentElement.setAttribute("data-theme", new URLSearchParams(location.search).get("theme") || "light");</script>
+<script src="../design-system/components/bundle.js"></script>
+<meta charset="utf-8">
+<title>Tabs</title>
+<style>
+html, body { margin: 0; }
+body { min-height: 100vh; }
+.xp { padding: var(--s-space-xl); }
+.xp-bare { padding: 0; }
+.xp-bare .cap { padding-inline: var(--s-space-xl); box-sizing: border-box; }
+.xp-note { margin: 0 0 var(--s-space-base); }
+.xp-bare .xp-note { padding-block-start: var(--s-space-base); }
+.row { display: flex; flex-wrap: wrap; gap: var(--s-space-md); align-items: center; margin-bottom: var(--s-space-md); }
+.row:last-child { margin-bottom: 0; }
+.stack { display: flex; flex-direction: column; gap: var(--s-space-md); }
+.grid2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--s-space-xl); }
+.grid2 > * { min-width: 0; }
+@media (max-width: 720px) { .grid2 { grid-template-columns: minmax(0, 1fr); } }
+.cap { width: 100%; margin: calc(-1 * var(--s-space-xs)) 0 0; font-family: var(--s-font-family-doc-mono), ui-monospace, monospace; font-size: var(--s-type-code-sm-size); color: var(--s-color-text-tertiary); }
+</style>
+</head>
+<body class="xds-page">
+<main class="xp">
+<div class="xds-tabs">
+      <div class="xds-tabs__list" role="tablist">
+        <button class="xds-tabs__tab" role="tab" aria-selected="true">Overview</button>
+        <button class="xds-tabs__tab" role="tab" aria-selected="false">Documents</button>
+        <button class="xds-tabs__tab" role="tab" aria-selected="false">History</button>
+        <button class="xds-tabs__tab" role="tab" aria-selected="false" aria-disabled="true">Archive</button>
+      </div>
+      <div class="xds-tabs__panel" role="tabpanel" style="padding:16px 0"><p class="xds-text" data-role="body-sm">Overview panel. Arrow keys move between tabs; only the selected tab sits in the Tab order.</p></div>
+      <div class="xds-tabs__panel" role="tabpanel" style="padding:16px 0" hidden><p class="xds-text" data-role="body-sm">Documents panel.</p></div>
+      <div class="xds-tabs__panel" role="tabpanel" style="padding:16px 0" hidden><p class="xds-text" data-role="body-sm">History panel.</p></div>
+      <div class="xds-tabs__panel" role="tabpanel" style="padding:16px 0" hidden><p class="xds-text" data-role="body-sm">Archive panel.</p></div>
+    </div>
+    <p class="cap" style="margin:24px 0 8px">data-numerals · the segmented tab from the V3 strategic plan · numeral in the code face, accent/70</p>
+    <div class="xds-tabs" data-numerals>
+      <div class="xds-tabs__list" role="tablist" aria-label="Strategic goals">
+        <button class="xds-tabs__tab" role="tab" aria-selected="true"><span class="xds-tabs__index">01</span>Safety</button>
+        <button class="xds-tabs__tab" role="tab" aria-selected="false"><span class="xds-tabs__index">02</span>Infrastructure</button>
+        <button class="xds-tabs__tab" role="tab" aria-selected="false"><span class="xds-tabs__index">03</span>Innovation</button>
+        <button class="xds-tabs__tab" role="tab" aria-selected="false"><span class="xds-tabs__index">04</span>Efficiency</button>
+      </div>
+      <div class="xds-tabs__panel" role="tabpanel" style="padding:16px 0"><p class="xds-text" data-role="body-sm">Reaffirm that safety is the Department’s top priority.</p></div>
+      <div class="xds-tabs__panel" role="tabpanel" style="padding:16px 0" hidden><p class="xds-text" data-role="body-sm">Invest in high-quality infrastructure.</p></div>
+      <div class="xds-tabs__panel" role="tabpanel" style="padding:16px 0" hidden><p class="xds-text" data-role="body-sm">Lead in innovation.</p></div>
+      <div class="xds-tabs__panel" role="tabpanel" style="padding:16px 0" hidden><p class="xds-text" data-role="body-sm">Run an efficient department.</p></div>
+    </div>
+</main>
+<script>
+(function () {
+  /* Dark surface theme: a dark-capable component carries data-surface="dark", as the system's own dark
+     specimens do; a light-only component has no dark variant, so its preview stays light and says so. */
+  var DARK = ".xds-prose,.xds-paper,.xds-button,.xds-link,.xds-label,.xds-checkbox,.xds-radio,.xds-switch,.xds-chip,.xds-divider,.xds-field,.xds-button-group,.xds-card,.xds-tile,.xds-summary-box,.xds-menu,.xds-disclosure,.xds-accordion,.xds-reference-list,.xds-gov-banner,.xds-breadcrumb,.xds-in-page-nav,.xds-text,.xds-icon,.xds-eyebrow,.xds-section-heading,.xds-pull-quote,.xds-stat,.xds-section-opener,.xds-objective,.xds-header,.xds-hero,.xds-modal,.xds-footer";
+  var PINNED = "[data-surface=\"light\"], [data-panel=\"light\"], .xds-header__mega, .xds-header__menu";
+  var LIGHT_ONLY = true;
+  var root = document.documentElement, main = document.querySelector("main"), mine = false;
+  function note(on) {
+    var n = document.getElementById("xp-note");
+    if (on && !n) { n = document.createElement("p"); n.id = "xp-note"; n.className = "cap xp-note"; n.textContent = "Light only: no dark variant. It stays light on a dark ground."; main.insertBefore(n, main.firstChild); }
+    if (!on && n) n.remove();
+  }
+  function apply() {
+    if (mine) { mine = false; return; }
+    var theme = root.getAttribute("data-theme");
+    if (LIGHT_ONLY) {
+      if (theme === "dark") { mine = true; root.setAttribute("data-theme", "light"); root.style.colorScheme = "light"; note(true); }
+      else note(false);
+      return;
+    }
+    document.querySelectorAll(DARK).forEach(function (el) {
+      if (theme === "dark") {
+        if (!el.hasAttribute("data-surface") && !el.closest(PINNED)) { el.setAttribute("data-surface", "dark"); el.setAttribute("data-xp-stamped", ""); }
+      } else if (el.hasAttribute("data-xp-stamped")) { el.removeAttribute("data-surface"); el.removeAttribute("data-xp-stamped"); }
+    });
+  }
+  document.querySelectorAll(".indet").forEach(function (i) { i.indeterminate = true; });
+  apply();
+  new MutationObserver(apply).observe(root, { attributes: true, attributeFilter: ["data-theme"] });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="../design-system/tokens.css">
+<link rel="stylesheet" href="../design-system/components/bundle.css">
+<script>document.documentElement.setAttribute("data-theme", new URLSearchParams(location.search).get("theme") || "light");</script>
+<script src="../design-system/components/bundle.js"></script>
+<meta charset="utf-8">
+<title>SelectionCard</title>
+<style>
+html, body { margin: 0; }
+body { min-height: 100vh; }
+.xp { padding: var(--s-space-xl); }
+.xp-bare { padding: 0; }
+.xp-bare .cap { padding-inline: var(--s-space-xl); box-sizing: border-box; }
+.xp-note { margin: 0 0 var(--s-space-base); }
+.xp-bare .xp-note { padding-block-start: var(--s-space-base); }
+.row { display: flex; flex-wrap: wrap; gap: var(--s-space-md); align-items: center; margin-bottom: var(--s-space-md); }
+.row:last-child { margin-bottom: 0; }
+.stack { display: flex; flex-direction: column; gap: var(--s-space-md); }
+.grid2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--s-space-xl); }
+.grid2 > * { min-width: 0; }
+@media (max-width: 720px) { .grid2 { grid-template-columns: minmax(0, 1fr); } }
+.cap { width: 100%; margin: calc(-1 * var(--s-space-xs)) 0 0; font-family: var(--s-font-family-doc-mono), ui-monospace, monospace; font-size: var(--s-type-code-sm-size); color: var(--s-color-text-tertiary); }
+</style>
+</head>
+<body class="xds-page">
+<main class="xp">
+<fieldset class="xds-form__group" style="border:0;margin:0;padding:0">
+      <legend class="xds-form__legend">Focus ring</legend>
+      <div class="stack" style="gap:12px">
+        <label class="xds-selection-card"><input class="xds-radio__control" type="radio" name="spec-ring" value="solid" checked>
+          <span class="xds-selection-card__body"><span class="xds-selection-card__title">Solid</span><span class="xds-selection-card__description">A 2px vivid ring, offset from the control. The system default.</span></span>
+          <span class="xds-selection-card__preview"><button class="xds-button" data-variant="secondary" data-size="sm" tabindex="-1" aria-hidden="true">Preview</button></span>
+        </label>
+        <label class="xds-selection-card"><input class="xds-radio__control" type="radio" name="spec-ring" value="heavy">
+          <span class="xds-selection-card__body"><span class="xds-selection-card__title">Heavy</span><span class="xds-selection-card__description">Twice the width, no offset. For a control sitting on a busy ground.</span></span>
+          <span class="xds-selection-card__preview"><button class="xds-button" data-variant="secondary" data-size="sm" tabindex="-1" aria-hidden="true">Preview</button></span>
+        </label>
+        <label class="xds-selection-card"><input class="xds-radio__control" type="radio" name="spec-ring" value="none" disabled>
+          <span class="xds-selection-card__body"><span class="xds-selection-card__title">None</span><span class="xds-selection-card__description">Not offered. A focus ring is not optional in this system.</span></span>
+        </label>
+      </div>
+      <p class="cap">the label is the target · selection reads in three channels: mark, fill, and the emphasis-4 rule — the same device an emphasis card wears</p>
+    </fieldset>
+</main>
+<script>
+(function () {
+  /* Dark surface theme: a dark-capable component carries data-surface="dark", as the system's own dark
+     specimens do; a light-only component has no dark variant, so its preview stays light and says so. */
+  var DARK = ".xds-prose,.xds-paper,.xds-button,.xds-link,.xds-label,.xds-checkbox,.xds-radio,.xds-switch,.xds-chip,.xds-divider,.xds-field,.xds-button-group,.xds-card,.xds-tile,.xds-summary-box,.xds-menu,.xds-disclosure,.xds-accordion,.xds-reference-list,.xds-gov-banner,.xds-breadcrumb,.xds-in-page-nav,.xds-text,.xds-icon,.xds-eyebrow,.xds-section-heading,.xds-pull-quote,.xds-stat,.xds-section-opener,.xds-objective,.xds-header,.xds-hero,.xds-modal,.xds-footer";
+  var PINNED = "[data-surface=\"light\"], [data-panel=\"light\"], .xds-header__mega, .xds-header__menu";
+  var LIGHT_ONLY = true;
+  var root = document.documentElement, main = document.querySelector("main"), mine = false;
+  function note(on) {
+    var n = document.getElementById("xp-note");
+    if (on && !n) { n = document.createElement("p"); n.id = "xp-note"; n.className = "cap xp-note"; n.textContent = "Light only: no dark variant. It stays light on a dark ground."; main.insertBefore(n, main.firstChild); }
+    if (!on && n) n.remove();
+  }
+  function apply() {
+    if (mine) { mine = false; return; }
+    var theme = root.getAttribute("data-theme");
+    if (LIGHT_ONLY) {
+      if (theme === "dark") { mine = true; root.setAttribute("data-theme", "light"); root.style.colorScheme = "light"; note(true); }
+      else note(false);
+      return;
+    }
+    document.querySelectorAll(DARK).forEach(function (el) {
+      if (theme === "dark") {
+        if (!el.hasAttribute("data-surface") && !el.closest(PINNED)) { el.setAttribute("data-surface", "dark"); el.setAttribute("data-xp-stamped", ""); }
+      } else if (el.hasAttribute("data-xp-stamped")) { el.removeAttribute("data-surface"); el.removeAttribute("data-xp-stamped"); }
+    });
+  }
+  document.querySelectorAll(".indet").forEach(function (i) { i.indeterminate = true; });
+  apply();
+  new MutationObserver(apply).observe(root, { attributes: true, attributeFilter: ["data-theme"] });
+})();
+</script>
+</body>
+</html>
