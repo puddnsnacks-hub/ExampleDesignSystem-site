@@ -4069,7 +4069,7 @@ a.xds-steps__marker:focus-visible { outline: var(--c-page-focus-width) solid var
 .xds-section-opener__media:has(>.xds-card) { aspect-ratio: auto; }
 }
 
-@media (max-width: 600px) {.xds-chip,.xds-button[data-size="sm"],.xds-conv-chip,.xds-conv-action,.xds-conv-composer__send,.xds-switch__control,.xds-checkbox__control,.xds-radio__control { min-height: var(--c-page-target-min); }
+@media (max-width: 600px) {.xds-chip,.xds-button[data-size="sm"],.xds-conv-chip,.xds-conv-action,.xds-conv-composer__send,.xds-switch,.xds-checkbox,.xds-radio { min-height: var(--c-page-target-min); }
 .xds-chip__dismiss { min-width: var(--c-page-target-min); min-height: var(--c-page-target-min); }
 }
 
