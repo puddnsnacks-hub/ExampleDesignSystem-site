@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../design-system/tokens.css">
+<link rel="stylesheet" href="../design-system/components/bundle.css">
+<script>document.documentElement.setAttribute("data-theme", new URLSearchParams(location.search).get("theme") || "light");</script>
+<script src="../design-system/components/bundle.js"></script>
+<meta charset="utf-8">
+<title>Press release</title>
+<style>
+html, body { margin: 0; }
+.xp-page-note { margin: 0; padding: var(--s-space-sm) var(--s-space-xl); background: var(--s-color-surface-sunken); color: var(--s-color-text-secondary); font-family: var(--s-font-family-doc-mono), ui-monospace, monospace; font-size: var(--s-type-code-sm-size); line-height: var(--s-type-code-sm-line-height); }
+</style>
+</head>
+<body class="xds-page">
+<div class="tpl-return" data-tpl-return>
+<a class="xds-button tpl-return__btn" data-variant="primary" href="index.html#t-press-release" data-tpl-close>
+<svg class="xds-icon xds-button__icon" aria-hidden="true"><use href="#xds-close"></use></svg>Close template</a>
+</div>
+<style>
+.tpl-return { position: fixed; z-index: 2147483000; inset-block-end: var(--s-space-base); inset-inline-end: var(--s-space-base);
+  box-shadow: var(--s-elevation-overlay); }
+html[data-shot] .tpl-return { display: none; }
+@media print { .tpl-return { display: none; } }
+</style>
+<script>
+(function () {
+  if (new URLSearchParams(location.search).has("shot")) document.documentElement.setAttribute("data-shot", "");
+  var btn = document.querySelector("[data-tpl-close]");
+  btn.addEventListener("click", function (e) {
+    var opener = null;
+    try { opener = window.opener && !window.opener.closed && /\/templates\/(index\.html)?$/.test(window.opener.location.pathname) ? window.opener : null; } catch (err) {}
+    if (!opener) return;                      /* no landing page behind us: follow the link to it */
+    e.preventDefault();
+    try { opener.focus(); } catch (err) {}
+    window.close();
+    setTimeout(function () { if (!window.closed) location.href = btn.href; }, 200);
+  });
+})();
+</script>
+<a class="xds-skip-link" href="#main">Skip to main content</a>
+<section class="xds-gov-banner" aria-label="Official website of the United States government"><details class="xds-gov-banner__disclosure"><summary class="xds-gov-banner__line"><span class="xds-gov-banner__inner"><img class="xds-gov-banner__flag" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAMAAABBPP0LAAAAG1BMVEUdM7EeNLIeM7HgQCDaPh/bPh/bPx/////bPyBEby41AAAAUElEQVQI123MNw4CABDEwD3jC/9/MQ1BQrgeOSkIqYe2o2FZtthXgQLgbHVMZdlsfUQFQnHtjP1+8BUhBDKOqtmfot6ojqPzR7TjdU+f6vkED+IDPhTBcMAAAAAASUVORK5CYII=" alt="" width="16" height="11" decoding="async"><span>An official website of the United States government</span><span class="xds-gov-banner__how">Here’s how you know</span></span></summary><div class="xds-gov-banner__panel"><div class="xds-gov-banner__grid"><div class="xds-gov-banner__item"><p><b class="xds-gov-banner__title">Official websites use .gov</b>A <strong>.gov</strong> website belongs to an official government organization in the United States.</p></div><div class="xds-gov-banner__item"><p><b class="xds-gov-banner__title">Secure .gov websites use HTTPS</b>A <strong>lock</strong> (<svg class="xds-gov-banner__lock" viewBox="0 0 16 16" role="img" aria-label="Locked padlock icon" focusable="false"><path d="M8 1a3.7 3.7 0 0 0-3.7 3.7v1.9h1.8V4.7a1.9 1.9 0 0 1 3.8 0v1.9h1.8V4.7A3.7 3.7 0 0 0 8 1z"/><path d="M3.2 6.6h9.6V15H3.2z"/></svg>) or <strong>https://</strong> means you’ve safely connected to the .gov website. Share sensitive information only on official, secure websites.</p></div></div></div></details></section>
+<header class="xds-header">
+  <div class="xds-header__utility" data-surface="dark"><div class="xds-header__content"><ul class="xds-header__utility-links"><li><a class="xds-header__utility-link" href="#">Help</a></li><li><a class="xds-header__utility-link" href="#">Contact</a></li><li><a class="xds-header__utility-link" href="#">Sign in</a></li></ul></div></div>
+  <div class="xds-header__bar"><div class="xds-header__content">
+    <a class="xds-header__lockup" href="#"><svg class="xds-header__logo" viewBox="0 0 48 48" aria-hidden="true"><path d="M2 2H12L46 36V46H36L2 12Z"/><path d="M10 28L20 38L12 46H2V36Z"/><path d="M28 10L36 2H46V12L38 20Z"/></svg><span class="xds-header__brand">Example Agency</span></a>
+    <button class="xds-header__menu" type="button" aria-label="Menu" aria-expanded="false"><svg class="xds-icon xds-header__menu-open" aria-hidden="true"><use href="#xds-menu"></use></svg><svg class="xds-icon xds-header__menu-close" aria-hidden="true"><use href="#xds-close"></use></svg></button>
+    <div class="xds-header__drawer"><nav aria-label="Primary"><ul class="xds-header__nav"><li><a class="xds-header__nav-item" href="#">About</a></li><li><button class="xds-header__nav-item" type="button" aria-expanded="false" aria-controls="mega-programs">Programs</button></li><li><a class="xds-header__nav-item" href="#" aria-current="page">Newsroom</a></li><li><button class="xds-header__nav-item" type="button" aria-expanded="false" aria-controls="mega-resources">Resources</button></li></ul></nav><form class="xds-header__search" role="search" onsubmit="return false"><input class="xds-input" type="search" aria-label="Search" placeholder="Begin typing to search"><button class="xds-button" data-variant="primary" data-icon="only" aria-label="Search"><svg class="xds-icon xds-button__icon" aria-hidden="true"><use href="#xds-search"></use></svg></button></form></div>
+  </div></div>
+  <div class="xds-header__mega" id="mega-programs" hidden><div class="xds-header__content"><div class="xds-header__mega-column"><p class="xds-header__mega-heading">Aviation</p><ul class="xds-header__mega-list"><li><a class="xds-header__mega-link" href="#">Office of Aviation</a></li><li><a class="xds-header__mega-link" href="#">Aviation consumer protection</a></li><li><a class="xds-header__mega-link" href="#">Aircraft registration</a></li></ul></div><div class="xds-header__mega-column"><p class="xds-header__mega-heading">Highways and roads</p><ul class="xds-header__mega-list"><li><a class="xds-header__mega-link" href="#">Office of Highways</a></li><li><a class="xds-header__mega-link" href="#">Bridge inspection</a></li><li><a class="xds-header__mega-link" href="#">Road safety</a></li><li><a class="xds-header__mega-link" href="#">National Highway System</a></li></ul></div><div class="xds-header__mega-column"><p class="xds-header__mega-heading">Maritime and rail</p><ul class="xds-header__mega-list"><li><a class="xds-header__mega-link" href="#">Office of Rail</a></li><li><a class="xds-header__mega-link" href="#">Office of Maritime Affairs</a></li><li><a class="xds-header__mega-link" href="#">Pipeline and hazmat</a></li></ul></div><div class="xds-header__mega-column"><p class="xds-header__mega-heading">Transit and mobility</p><ul class="xds-header__mega-list"><li><a class="xds-header__mega-link" href="#">Office of Transit</a></li><li><a class="xds-header__mega-link" href="#">Public transportation</a></li><li><a class="xds-header__mega-link" href="#">Active transportation</a></li></ul></div></div></div>
+  <div class="xds-header__mega" id="mega-resources" hidden><div class="xds-header__content"><div class="xds-header__mega-column"><p class="xds-header__mega-heading">Data</p><ul class="xds-header__mega-list"><li><a class="xds-header__mega-link" href="#">Data catalog</a></li><li><a class="xds-header__mega-link" href="#">Performance dashboards</a></li><li><a class="xds-header__mega-link" href="#">Open government</a></li></ul></div><div class="xds-header__mega-column"><p class="xds-header__mega-heading">Documents</p><ul class="xds-header__mega-list"><li><a class="xds-header__mega-link" href="#">Forms</a></li><li><a class="xds-header__mega-link" href="#">Reports to Congress</a></li><li><a class="xds-header__mega-link" href="#">Strategic plan</a></li></ul></div></div></div>
+</header>
+<main id="main" tabindex="-1">
+<section class="xds-ground"><div class="xds-layout" data-kind="container" data-width="set" data-set="page"><div class="xds-layout" data-kind="stack" data-gap="xl">
+<nav class="xds-breadcrumb" aria-label="Breadcrumb"><ol class="xds-breadcrumb__list"><li><a class="xds-breadcrumb__link" href="#">Home</a></li><li><a class="xds-breadcrumb__link" href="#">Newsroom</a></li><li><a class="xds-breadcrumb__link" href="#">Press releases</a></li><li><span class="xds-breadcrumb__current" aria-current="page">Agency 42-26</span></li></ol></nav>
+<article class="xds-prose">
+<p class="xds-eyebrow" data-divider>Press release</p>
+<h1>Example Agency announces $1.2 billion for rural bridge repair</h1>
+<p class="xds-prose__lead">Grants to 43 states will replace or rehabilitate 284 bridges in poor condition, with a set-aside for counties under 50,000 people.</p>
+</article>
+<dl class="xds-dl" data-layout="row" data-dividers><div class="xds-dl__group"><dt>Contact</dt><dd>Office of Public Affairs, 555-010-4570</dd></div><div class="xds-dl__group"><dt>Release number</dt><dd>Agency 42-26</dd></div><div class="xds-dl__group"><dt>Date</dt><dd><time datetime="2026-08-18">Tuesday, August 18, 2026</time></dd></div><div class="xds-dl__group"><dt>Docket</dt><dd>Highway Office-2026-0012</dd></div></dl>
+<article class="xds-prose">
+<p><strong>WASHINGTON</strong> – The Example Agency's Office of Highways today announced $1.2 billion in Bridge Investment Program grants to 43 states for 284 bridges rated in poor condition. Two hundred of the bridges are owned by counties, towns or tribal governments, and 61 of them are currently closed or load-posted.</p>
+<p>"A bridge that is closed is not a transportation asset. It is a detour, and the detour is paid for every day by the people who live on the wrong side of it," said the Secretary. "These grants go to the bridges that carry school buses, grain trucks and ambulances, in the places least able to pay for them alone."</p>
+<p>The awards include $340 million under the program's set-aside for bridges owned by counties, tribes and communities under 50,000 people, which may be funded at up to 100 percent federal share. The largest single award, $96 million, goes to the replacement of the Route 9 crossing of the Kennebec River in Maine, closed since 2024.</p>
+<h2>Selected awards</h2>
+<ul><li>Maine: $96 million to replace the Route 9 Kennebec River bridge</li><li>Ohio: $71 million for 19 county bridges in the Appalachian region</li><li>Montana: $44 million for six bridges on the Crow Reservation</li><li>Texas: $38 million to rehabilitate the Brazos River crossing on FM 1462</li></ul>
+<p>The full list of awards, by state, is attached. Applications for the fiscal year 2027 round open in January.</p>
+<p>###</p>
+</article>
+<header class="xds-section-heading"><div class="xds-section-heading__row"><h2 class="xds-section-heading__heading">Documents</h2></div></header>
+<div class="xds-layout" data-kind="stack" data-gap="sm"><a class="xds-document-link" href="#" download><svg class="xds-icon xds-document-link__icon" aria-hidden="true"><use href="#xds-file"></use></svg><span class="xds-document-link__body"><span class="xds-document-link__title">Full list of awards, fiscal year 2026</span><span class="xds-document-link__meta">PDF · 1.1 MB · 9 pages</span></span></a><a class="xds-document-link" href="#" download><svg class="xds-icon xds-document-link__icon" aria-hidden="true"><use href="#xds-file"></use></svg><span class="xds-document-link__body"><span class="xds-document-link__title">Awards by state and bridge</span><span class="xds-document-link__meta">CSV · 48 KB · 284 rows</span></span></a><a class="xds-document-link" href="#" rel="external" target="_blank"><svg class="xds-icon xds-document-link__icon" aria-hidden="true"><use href="#xds-file"></use></svg><span class="xds-document-link__body"><span class="xds-document-link__title">Docket Highway Office-2026-0012 on regulations.gov</span><span class="xds-document-link__meta">regulations.gov · opens in a new tab</span></span></a></div>
+</div></div>
+</section>
+</main>
+<footer class="xds-footer" data-surface="dark">
+  <div class="xds-footer__band" data-band="top"><div class="xds-footer__content">
+    <div class="xds-footer__agency"><div class="xds-footer__lockup"><svg class="xds-footer__logo" viewBox="0 0 48 48" aria-hidden="true"><path d="M2 2H12L46 36V46H36L2 12Z"/><path d="M10 28L20 38L12 46H2V36Z"/><path d="M28 10L36 2H46V12L38 20Z"/></svg><p class="xds-footer__brand">Example Agency</p></div><address class="xds-footer__address">100 Example Street<br>Anytown, ST 00000<br>855-368-4200</address></div>
+    <form class="xds-footer__newsletter" onsubmit="return false"><p class="xds-footer__heading">Stay connected</p><p class="xds-footer__description">Sign up for email updates from the Example Agency.</p><div class="xds-footer__subscribe"><input class="xds-input" type="email" aria-label="Email address" placeholder="Email address"><button class="xds-button" data-variant="primary">Subscribe</button></div></form>
+  </div></div>
+  <details class="xds-footer__band" data-band="nav" open><summary class="xds-footer__sitemap">Site map</summary><nav class="xds-footer__content" aria-label="Footer"><div class="xds-footer__columns"><div class="xds-footer__column"><p class="xds-footer__heading">About the Agency</p><ul class="xds-footer__list"><li><a class="xds-footer__link" href="#">Mission</a></li><li><a class="xds-footer__link" href="#">Leadership</a></li><li><a class="xds-footer__link" href="#">Careers</a></li><li><a class="xds-footer__link" href="#">Budget and performance</a></li><li><a class="xds-footer__link" href="#">Strategic plan</a></li></ul></div><div class="xds-footer__column"><p class="xds-footer__heading">Programs</p><ul class="xds-footer__list"><li><a class="xds-footer__link" href="#">Aviation</a></li><li><a class="xds-footer__link" href="#">Highway</a></li><li><a class="xds-footer__link" href="#">Maritime</a></li><li><a class="xds-footer__link" href="#">Rail</a></li><li><a class="xds-footer__link" href="#">Transit</a></li></ul></div><div class="xds-footer__column"><p class="xds-footer__heading">Connect</p><ul class="xds-footer__list"><li><a class="xds-footer__link" href="#">Newsroom</a></li><li><a class="xds-footer__link" href="#">Subscribe</a></li><li><a class="xds-footer__link" href="#">Public engagement</a></li><li><a class="xds-footer__link" href="#">Social media</a></li><li><a class="xds-footer__link" href="#">Contact us</a></li></ul></div><div class="xds-footer__column"><p class="xds-footer__heading">Resources</p><ul class="xds-footer__list"><li><a class="xds-footer__link" href="#">Forms</a></li><li><a class="xds-footer__link" href="#">Reports</a></li><li><a class="xds-footer__link" href="#">Data catalog</a></li><li><a class="xds-footer__link" href="#">Performance</a></li><li><a class="xds-footer__link" href="#">Open government</a></li></ul></div></div></nav></details>
+  <div class="xds-footer__band" data-band="social"><div class="xds-footer__content"><p class="xds-footer__social-label">Connect with us:</p><ul class="xds-footer__socials"><li><a class="xds-footer__social" href="#" aria-label="Facebook"><svg class="xds-icon" aria-hidden="true"><use href="#xds-social-facebook"></use></svg></a></li><li><a class="xds-footer__social" href="#" aria-label="Instagram"><svg class="xds-icon" aria-hidden="true"><use href="#xds-social-instagram"></use></svg></a></li><li><a class="xds-footer__social" href="#" aria-label="LinkedIn"><svg class="xds-icon" aria-hidden="true"><use href="#xds-social-linkedin"></use></svg></a></li><li><a class="xds-footer__social" href="#" aria-label="YouTube"><svg class="xds-icon" aria-hidden="true"><use href="#xds-social-youtube"></use></svg></a></li><li><a class="xds-footer__social" href="#" aria-label="X"><svg class="xds-icon" aria-hidden="true"><use href="#xds-social-x"></use></svg></a></li></ul></div></div>
+  <div class="xds-footer__band" data-band="compliance"><nav class="xds-footer__content" aria-label="Policies"><ul class="xds-footer__compliance"><li><a class="xds-footer__link" href="#">Privacy policy</a></li><li><a class="xds-footer__link" href="#">FOIA</a></li><li><a class="xds-footer__link" href="#">Accessibility</a></li><li><a class="xds-footer__link" href="#">No FEAR Act</a></li><li><a class="xds-footer__link" href="#">Information quality</a></li><li><a class="xds-footer__link" href="#">USA.gov</a></li><li><a class="xds-footer__link" href="#">Plain writing</a></li><li><a class="xds-footer__link" href="#">Web policies</a></li></ul></nav></div>
+  <div class="xds-footer__band" data-band="copyright"><div class="xds-footer__content"><p class="xds-footer__legal">Example Agency · 100 Example Street · Anytown, ST 00000</p></div></div>
+</footer>
+<script>
+(function () {
+  /* A page has no dark mode: dark is a variant its components carry, and this page already carries it where it is
+     designed to. In the Dark surface theme the page stays as designed and says so. */
+  var root = document.documentElement, mine = false;
+  function note(on) {
+    var n = document.getElementById("xp-page-note");
+    if (on && !n) { n = document.createElement("p"); n.id = "xp-page-note"; n.className = "xp-page-note"; n.textContent = "Pages have no dark mode: dark is a variant components carry, and this page carries it where it is designed to."; document.body.insertBefore(n, document.body.firstChild); }
+    if (!on && n) n.remove();
+  }
+  function apply() {
+    if (mine) { mine = false; return; }
+    if (root.getAttribute("data-theme") === "dark") { mine = true; root.setAttribute("data-theme", "light"); root.style.colorScheme = "light"; note(true); }
+    else note(false);
+  }
+  apply();
+  new MutationObserver(apply).observe(root, { attributes: true, attributeFilter: ["data-theme"] });
+})();
+</script>
+</body>
+</html>

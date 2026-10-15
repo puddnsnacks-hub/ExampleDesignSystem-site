@@ -70,11 +70,11 @@
 │   │   └── &lt;Name&gt;/            README.md guide + preview.html specimen
 │   ├── fonts/                  14 WOFF2 files
 │   └── assets/                 Icons (41), Logos (2), Photography (4)
-├── gallery/                    every preview as an openable page
+├── templates/                  the templates landing page and every template as a live page
 ├── How-To-Docs/                this guide
 └── tools/
     ├── compile_tokens.py       tokens.json → tokens.css
-    ├── build_gallery.py        previews → gallery/
+    ├── build_template_pages.py templates → templates/ (shoot_templates.py makes the previews)
     └── build/                  regenerates design-system/ from the XDS V4 source</code></pre>
           <div class="hd-scroll">
             <table>
@@ -99,17 +99,17 @@
             <summary class="xds-accordion__summary"><span class="xds-accordion__prompt hd-summary">What is all this, and which parts should I care about? <span class="xds-badge">Learn more</span></span></summary>
             <div class="xds-accordion__panel body xds-prose">
               <h4>What</h4>
-              <p>A design system is a shared kit for building web pages: the colors, type, spacing and ready-made pieces (buttons, cards, forms) every page uses. A repository, or "repo," is the folder that kit lives in on GitHub, with a full history of every change. The <code>design-system</code> folder is the kit itself. The other folders let you see it (<code>gallery</code>), learn it (this guide) and rebuild it (<code>tools</code>).</p>
+              <p>A design system is a shared kit for building web pages: the colors, type, spacing and ready-made pieces (buttons, cards, forms) every page uses. A repository, or "repo," is the folder that kit lives in on GitHub, with a full history of every change. The <code>design-system</code> folder is the kit itself. The other folders let you see it (<code>templates</code> and <code>documentation</code>), learn it (this guide) and rebuild it (<code>tools</code>).</p>
               <h4>Why</h4>
               <p>Keeping the kit in one place means every page draws from the same source. Change the link color once and every page that uses the kit gets the new color. Without it, each team copies values by hand, and the copies slowly drift apart.</p>
               <h4>How</h4>
               <ol>
-                <li>Open <code>gallery/index.html</code> to see every piece working.</li>
+                <li>Open <code>templates/index.html</code> to see full pages working, and <code>documentation/index.html</code> for every piece.</li>
                 <li>Read <code>design-system/README.md</code> for the rules of use.</li>
                 <li>Open a piece's folder in <code>design-system/components</code> for its guide.</li>
                 <li>Leave the generated files (<code>tokens.css</code>, <code>bundle.css</code>, <code>bundle.js</code>) alone; they are rebuilt from the sources.</li>
               </ol>
-              <blockquote class="hd-analogy"><p><em>Analogy:</em> it's a restaurant's recipe binder. The binder is the design system, the photos in it are the gallery, and the kitchen notes on how the binder is printed are the tools. Cooks follow the binder; nobody rewrites the printed copies by hand.</p></blockquote>
+              <blockquote class="hd-analogy"><p><em>Analogy:</em> it's a restaurant's recipe binder. The binder is the design system, the photos in it are the templates, and the kitchen notes on how the binder is printed are the tools. Cooks follow the binder; nobody rewrites the printed copies by hand.</p></blockquote>
             </div>
           </details>
         </div>
@@ -228,7 +228,7 @@
               <p>Fixed nesting keeps spacing identical from page to page, so pages feel like one site even when different people build them. The system also measures the space between bands for you, so nobody has to guess.</p>
               <h4>How</h4>
               <ol>
-                <li>Find the template closest to the page you need in the gallery's Templates group, and copy its markup.</li>
+                <li>Find the template closest to the page you need on the Templates page, and copy its markup.</li>
                 <li>Replace the words and images; keep the bands, containers and pieces.</li>
                 <li>If you need a piece the template lacks, look up the user's goal in <code>choosing.md</code> and copy that piece's markup from its guide.</li>
                 <li>For a dark band, mark the band dark and mark each piece inside it dark too.</li>
@@ -267,10 +267,10 @@
           </div>
           <p>Change a value:</p>
 <pre><code># 1. edit the value in design-system/tokens.json
-# 2. regenerate the compiled files and the gallery
+# 2. regenerate the compiled files and the templates
 python3 tools/compile_tokens.py
-python3 tools/build_gallery.py
-# 3. check the gallery in Light, Dark surface and Alternate pack, then commit</code></pre>
+python3 tools/build_template_pages.py
+# 3. check the reference page and the templates (add ?theme=dark or ?theme=alt to a template), then commit</code></pre>
           <ul>
             <li>Never write a color, size, radius or font literal in page CSS; bind <code>--s-*</code>. If no token fits, report the gap.</li>
             <li>A semantic color's dark-surface value is stored twice: the Dark surface theme in <code>tokens.json</code> and the <code>data-surface="dark"</code> scope (section 3) in <code>bundle.css</code>. Change both together.</li>
@@ -293,7 +293,7 @@ python3 tools/build_gallery.py
               <ol>
                 <li>Find the token in <code>tokens.json</code> and change its value.</li>
                 <li>Run the two commands shown above to rebuild.</li>
-                <li>Open the gallery and look at the pieces that use it, in all three themes.</li>
+                <li>Open the reference page and a few templates and look at the pieces that use it, in all three themes.</li>
                 <li>Commit the change with a sentence saying what changed and why.</li>
               </ol>
               <blockquote class="hd-analogy"><p><em>Analogy:</em> it's a paint store. The chips on the wall are the bottom layer; "kitchen walls" and "front door" on your shopping list are the middle layer. Repaint the front door by crossing out one chip number on the list, not by visiting every door.</p></blockquote>
@@ -321,8 +321,8 @@ python3 tools/build_gallery.py
 <pre><code>git clone https://github.com/puddnsnacks-hub/ExampleDesignSystem.git
 cd ExampleDesignSystem
 git switch -c darken-link-color
-# edit, then: python3 tools/compile_tokens.py &amp;&amp; python3 tools/build_gallery.py
-git add design-system gallery
+# edit, then: python3 tools/compile_tokens.py &amp;&amp; python3 tools/build_template_pages.py
+git add design-system templates
 git commit -m "Darken the link color one step"
 git push -u origin darken-link-color</code></pre>
           <p>Open a pull request from the branch on GitHub; merge into <code>main</code> after review. <code>main</code> is the released state.</p>
@@ -334,9 +334,9 @@ git push origin v2.1.1</code></pre>
 <pre><code>git submodule add https://github.com/puddnsnacks-hub/ExampleDesignSystem.git vendor/ExampleDesignSystem
 # link vendor/ExampleDesignSystem/design-system/tokens.css, components/bundle.css, components/bundle.js
 git submodule update --remote          # pull a newer version later</code></pre>
-          <h3>Host the gallery and this guide</h3>
+          <h3>Host the site and this guide</h3>
           <p>The site lives in a separate public repository, <code>puddnsnacks-hub/ExampleDesignSystem-site</code>, served by GitHub Pages at <a href="https://xds.puddnsnacks.com">xds.puddnsnacks.com</a>. The source repository stays private. After a change is merged into <code>main</code>:</p>
-<pre><code>python3 tools/publish_site.py            # copies index.html, documentation/, gallery/, How-To-Docs/, design-system/ and pushes
+<pre><code>python3 tools/publish_site.py            # copies index.html, documentation/, templates/, How-To-Docs/, design-system/ and pushes
 python3 tools/publish_site.py --dry-run  # counts what would change, pushes nothing</code></pre>
           <p>Never edit the site repository by hand; each publish replaces it. The domain is a CNAME record (<code>xds</code> → <code>puddnsnacks-hub.github.io</code>) at the domain registrar. Without the site, open <code>index.html</code> from a local clone.</p>
           <h3>Keep the hosted design-system page in step</h3>
@@ -375,7 +375,7 @@ python3 tools/publish_site.py --dry-run  # counts what would change, pushes noth
 
 <footer class="xds-ground" data-ground="sunken">
   <div class="xds-layout" data-kind="container">
-    <p class="xds-text" data-role="ui-md" data-tone="secondary">Generated October 14, 2026 for ExampleDesignSystem. Related: <a class="xds-link" href="../README.md">README.md</a> · <a class="xds-link" href="../design-system/README.md">design-system/README.md</a> · <a class="xds-link" href="../gallery/index.html">Gallery</a></p>
+    <p class="xds-text" data-role="ui-md" data-tone="secondary">Generated October 14, 2026 for ExampleDesignSystem. Related: <a class="xds-link" href="../README.md">README.md</a> · <a class="xds-link" href="../design-system/README.md">design-system/README.md</a> · <a class="xds-link" href="../templates/index.html">Templates</a></p>
   </div>
 </footer>
 </body>

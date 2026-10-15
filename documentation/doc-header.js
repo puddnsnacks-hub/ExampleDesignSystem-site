@@ -13,7 +13,7 @@
   var path = location.pathname;
   var section = path.indexOf("/documentation/guide/") >= 0 ? "guide" :
     path.indexOf("/documentation/") >= 0 ? "components" :
-    path.indexOf("/gallery/") >= 0 ? "gallery" :
+    path.indexOf("/templates/") >= 0 ? "templates" :
     path.indexOf("/How-To-Docs/") >= 0 ? "howto" : "home";
   var LOGO = '<svg class="xds-header__logo" viewBox="0 0 48 48" aria-hidden="true"><path d="M2 2H12L46 36V46H36L2 12Z"/><path d="M10 28L20 38L12 46H2V36Z"/><path d="M28 10L36 2H46V12L38 20Z"/></svg>';
   var NAME_MEMBERS_MAX = 10, NAME_MEMBERS_MIN = 3;
@@ -63,7 +63,7 @@
     var nav = [
       ["components", "Components", hasComponents ? null : DOCS + "index.html", hasComponents ? "xdh-c" : null],
       ["guide", "Style guide", null, "xdh-g"],
-      ["gallery", "Gallery", ROOT + "gallery/index.html", null],
+      ["templates", "Templates", ROOT + "templates/index.html", null],
       ["howto", "How-to", ROOT + "How-To-Docs/index.html", null]
     ].map(function (n) {
       var cur = n[0] === section ? ' aria-current="page"' : "";
@@ -78,7 +78,7 @@
     return '<header class="xds-header">' +
       '<div class="xds-header__utility" data-surface="dark"><div class="xds-header__content"><ul class="xds-header__utility-links">' +
       '<li><a class="xds-header__utility-link" href="' + DOCS + 'index.html">Reference</a></li>' +
-      '<li><a class="xds-header__utility-link" href="' + ROOT + 'gallery/index.html">Gallery</a></li>' +
+      '<li><a class="xds-header__utility-link" href="' + ROOT + 'templates/index.html">Templates</a></li>' +
       '<li><a class="xds-header__utility-link" href="' + ROOT + 'How-To-Docs/index.html">How-to</a></li>' +
       "</ul></div></div>" +
       '<div class="xds-header__bar"><div class="xds-header__content">' + lockup +

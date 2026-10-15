@@ -1,4 +1,11 @@
 
+const a11yList = items => (Array.isArray(items) ? items : [items]).map(it => {
+  if (typeof it === "string") return esc(it);
+  const kind = ["check", "behavior", "app", "review"].find(k => k in it) || Object.keys(it)[0];
+  const w = [].concat(it.wcag || []); const wcag = w.length ? ` <span style="opacity:.7">WCAG ${w.map(esc).join(", ")}</span>` : "";
+  return `<span style="display:block"><b>${esc(kind)}</b> ${esc(String(it[kind]))}${wcag}</span>`;
+}).join("");
+
 const M = window.XDS_MANIFEST, T = window.XDS_TOKENS, P = window.XDS_PALETTE, S = window.XDS_SPECIMENS || {};
 
 const PINNED_LIGHT = '[data-surface="light"], [data-panel="light"], .xds-header__mega, .xds-header__menu';
@@ -255,7 +262,7 @@ const picksOf = c => {
     const toks = c.tokens.map(v => { const t = T[v.replace(/^--/, "").replace(/-/g, ".")] || Object.values(T).find(x => x.cssVar === v); return `<tr><td>${v}</td><td>${esc(t?.raw ?? "")}</td><td>${t?.type === "color" ? `<span class="chip" style="background:${t.light}"></span>` : ""}${esc(t?.light ?? "")}</td><td>${t?.flips ? `<span class="chip" style="background:${t.dark}"></span>${esc(t.dark)}` : "<span style='opacity:.4'>same</span>"}</td></tr>`; }).join("");
     e.append(h("div", { class: "apparatus" }, `
       <div class="panel"><h4>props</h4><dl>${props}</dl></div>
-      <div class="panel"><h4>states</h4><dl><dt>states</dt><dd>${c.states.map(esc).join(" · ")}</dd>${c.composes ? `<dt>composes</dt><dd>${c.composes.join(" · ")}</dd>` : ""}${(c.optionalParts || []).length ? `<dt>optional parts</dt><dd>${c.optionalParts.map(esc).join(" · ")}</dd>` : ""}${c.a11y ? `<dt>a11y</dt><dd style="font-family:inherit">${esc(c.a11y)}</dd>` : ""}</dl></div>
+      <div class="panel"><h4>states</h4><dl><dt>states</dt><dd>${c.states.map(esc).join(" · ")}</dd>${c.composes ? `<dt>composes</dt><dd>${c.composes.join(" · ")}</dd>` : ""}${(c.optionalParts || []).length ? `<dt>optional parts</dt><dd>${c.optionalParts.map(esc).join(" · ")}</dd>` : ""}${c.a11y ? `<dt>a11y</dt><dd style="font-family:inherit">${a11yList(c.a11y)}</dd>` : ""}</dl></div>
       <div class="panel wide"><h4>html</h4><pre>${esc(c.html)}</pre></div>
       <div class="panel wide"><h4>bound tokens · ${c.tokens.length} · every one is c-, every one resolves through s- to g-</h4>
         <details class="toks"><summary>show the binding table</summary><div class="scroll-x"><table class="tok-table"><thead><tr><th>c- token</th><th>→ s-</th><th>light</th><th>dark</th></tr></thead><tbody>${toks}</tbody></table></div></details>
